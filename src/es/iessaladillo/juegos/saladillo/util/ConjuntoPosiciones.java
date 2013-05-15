@@ -1,11 +1,7 @@
 package es.iessaladillo.juegos.saladillo.util;
 
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.Iterator;
-
-
-
 
 public class ConjuntoPosiciones {
 	

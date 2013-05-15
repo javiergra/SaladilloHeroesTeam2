@@ -11,7 +11,7 @@ package es.iessaladillo.juegos.saladillo.controller;
 
 
 
-public interface Dibujable extends Cloneable{
+public interface Dibujable extends Cloneable {
 	
 	/** Devuelve el nombre de la imagen asociada a un elemento del mapa.
 	 * 
