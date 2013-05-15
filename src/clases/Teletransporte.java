@@ -7,6 +7,6 @@ package clases;
  * @author Annais
  *
  */
-public class Diamantes {
+public class Teletransporte {
 
 }
