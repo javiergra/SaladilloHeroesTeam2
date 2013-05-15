@@ -1,11 +1,18 @@
 package es.iessaladillo.juegos.saladillo.model.action;
 
-public class AccionCargarMapa implements Accion {
+import es.iessaladillo.juegos.saladillo.controller.MapaInterface;
 
+public class AccionCargarMapa implements Accion {
+	
+	private MapaInterface mapa;
+	
+	public AccionCargarMapa(MapaInterface mapa) {
+		this.mapa = mapa;
+	}
+	
 	@Override
 	public Object ejecutar() {
-		// TODO Auto-generated method stub
-		return null;
+		return mapa;
 	}
 
 }
