@@ -7,6 +7,6 @@ package clases;
  * @author Annais
  *
  */
-public class TipoTeletransporte {
-
+public enum TipoTeletransporte {
+	TELETRANSPORTEROJO, TELETRANSPORTEAZUL;
 }
