@@ -26,7 +26,7 @@ public class SaladilloFacade implements SaladilloFacadeDelegate {
 
 	@Override
 	public void cargarMapa(MapaInterface mapa) {
-		this.mapa = (MapaInterface) new AccionCargarMapa(mapa).ejecutar();
+		this.setMapa((MapaInterface) new AccionCargarMapa(mapa).ejecutar());
 	}
 
 	@Override
@@ -57,6 +57,14 @@ public class SaladilloFacade implements SaladilloFacadeDelegate {
 	public ConjuntoPosiciones posicionesAActualizar() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public MapaInterface getMapa() {
+		return mapa;
+	}
+
+	public void setMapa(MapaInterface mapa) {
+		this.mapa = mapa;
 	}
 
 }
