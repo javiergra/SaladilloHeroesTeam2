@@ -17,7 +17,6 @@ public class Fondo extends Elemento {
 	}
 
 	public Dibujable getFondo() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -41,6 +40,10 @@ public class Fondo extends Elemento {
 	}
 
 	public void setTipo(TipoFondo tipo) {
+		this.tipo = tipo;
+	}
+
+	private Fondo(TipoFondo tipo) {
 		this.tipo = tipo;
 	}
 

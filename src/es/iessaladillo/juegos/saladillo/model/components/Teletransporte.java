@@ -14,5 +14,10 @@ public class Teletransporte extends Elemento {
 		return tipo;
 	}
 
+
+	public void setTipo(TipoTeletransporte tipo) {
+		this.tipo = tipo;
+	}
+
 	
 }

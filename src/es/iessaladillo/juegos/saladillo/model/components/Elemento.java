@@ -4,6 +4,8 @@ import es.iessaladillo.juegos.saladillo.controller.Dibujable;
 
 public class Elemento implements Dibujable {
 
+	private Dibujable fondo;
+		
 	@Override
 	public String getNombreImagen() {
 		// TODO Auto-generated method stub
@@ -18,13 +20,12 @@ public class Elemento implements Dibujable {
 
 	@Override
 	public Dibujable getFondo() {
-		// TODO Auto-generated method stub
-		return null;
+		return fondo;
 	}
 
 	@Override
 	public void setFondo(Dibujable dibujable) {
-		// TODO Auto-generated method stub
+		this.fondo = fondo;
 		
 	}
 
@@ -38,4 +39,5 @@ public class Elemento implements Dibujable {
 		// TODO
 		return null;
 	}
+
 }

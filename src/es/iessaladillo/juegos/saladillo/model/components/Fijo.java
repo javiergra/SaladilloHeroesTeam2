@@ -43,4 +43,8 @@ public class Fijo extends Elemento {
 	public void setTipo(TipoFijo tipo) {
 		this.tipo = tipo;
 	}
+
+	private Fijo(TipoFijo tipo) {
+		this.tipo = tipo;
+	}
 }
