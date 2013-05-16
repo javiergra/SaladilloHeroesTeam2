@@ -4,7 +4,7 @@ package es.iessaladillo.juegos.saladillo.model.components;
  * Enumeración que contiene todos los posibles tipos que adoptará un elemento del frente.
  *
  */
-public enum ElemFrente {
+public enum TipoFijo {
 	ARBOL(false),
 	CASA(false),
 	EDIFICIO(false),
@@ -20,7 +20,7 @@ public enum ElemFrente {
 	
 	private boolean movible;
 
-	private ElemFrente(boolean movible) {
+	private TipoFijo(boolean movible) {
 		this.movible = movible;
 	}
 

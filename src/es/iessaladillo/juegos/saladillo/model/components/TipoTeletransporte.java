@@ -9,4 +9,12 @@ package es.iessaladillo.juegos.saladillo.model.components;
  */
 public enum TipoTeletransporte {
 	TELETRANSPORTEROJO, TELETRANSPORTEAZUL;
+	
+	/**
+	 * 
+	 * @return <code>true</code> si es rojo.
+	 */
+	public static boolean getTipo(String s) {
+		return (s.toLowerCase().equals("rojo")) ? true : false;
+	}
 }

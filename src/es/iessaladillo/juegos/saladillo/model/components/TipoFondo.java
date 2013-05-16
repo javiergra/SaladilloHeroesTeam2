@@ -4,7 +4,7 @@ package es.iessaladillo.juegos.saladillo.model.components;
  * Enumeración que contiene todos los posibles tipos que adoptará un elemento del fondo.
  *
  */
-public enum ElemFondo { 
+public enum TipoFondo { 
 	CAMINOARENA,
 	CAMINOARENACOMBINADOU,
 	CAMINOARENACOMBINADOD,
