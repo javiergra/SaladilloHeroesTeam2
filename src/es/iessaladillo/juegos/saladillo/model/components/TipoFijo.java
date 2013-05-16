@@ -5,18 +5,18 @@ package es.iessaladillo.juegos.saladillo.model.components;
  *
  */
 public enum TipoFijo {
-	ARBOL(false),
-	CASA(false),
-	EDIFICIO(false),
-	EDIFICIO2(false),
-	MATORRAL(false),
-	ROCASUELO(false),
-	CAJA(true),
-	BOLAPIEDRA(true),
-	PELOTAAZUL(true),
-	PELOTANARANJA(true),
-	PELOTAVERDE(true),
-	PELOTAROJA(true);
+	Arbol(false),
+	Casa(false),
+	Edificio(false),
+	Edificio2(false),
+	Matorral(false),
+	RocaSuelo(false),
+	BolaPiedra(false),
+	Caja(true),
+	PelotaAzul(true),
+	PelotaNaranja(true),
+	PelotaVerde(true),
+	PelotaRoja(true);
 	
 	private boolean movible;
 
@@ -30,26 +30,13 @@ public enum TipoFijo {
 	
 	public static boolean isMovible(String tipo) {
 		switch(tipo) {
-		case "CAJA":
-		case "BOLAPIEDRA":
-		case "PELOTAAZUL":
-		case "PELOTANARANJA":
-		case "PELOTAVERDE":
-		case "PELOTAROJA":
+		case "Caja":
+		case "PelotaAzul":
+		case "PelotaNaranja":
+		case "PelotaVerde":
+		case "PelotaRoja":
 			return true;
 			
-		/*
-		 * Esto no sirve de nada, por el simple hecho del uso de "default";
-		 * si no es ninguno anterior, será irremediablemente falso.
-		
-		case "CASA":
-		case "EDIFICIO":
-		case "EDIFICIO2":
-		case "MATORRAL":
-		case "ROCASUELO":
-		
-		 */
-
 		default:
 			return false;
 		}
