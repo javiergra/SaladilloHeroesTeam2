@@ -19,8 +19,8 @@ public class Fijo extends Elemento {
 	}
 
 	public Object clone() {
-		// TODO
-		return null;
+		Fijo f=(Fijo) super.clone();
+		return f;
 	}
 
 	public TipoFijo getTipo() {

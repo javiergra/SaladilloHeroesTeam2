@@ -34,8 +34,12 @@ public class Elemento implements Dibujable {
 	}
 
 	public Object clone() {
-		// TODO
-		return null;
+		try{
+			Elemento e=(Elemento) super.clone();
+			return e;
+		}catch(CloneNotSupportedException cnse){
+			return null;
+		}
 	}
 
 	public Elemento(Dibujable fondo) {
