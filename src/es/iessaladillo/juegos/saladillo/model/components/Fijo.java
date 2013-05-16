@@ -7,28 +7,15 @@ public class Fijo extends Elemento {
 	private TipoFijo tipo;
 	
 	public String getNombreImagen() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public boolean contieneFondo() {
-		// TODO Auto-generated method stub
-		return false;
+		return tipo.name();
 	}
 
 	public Dibujable getFondo() {
-		// TODO Auto-generated method stub
-		return null;
+		return fondo;
 	}
 
-	public void setFondo(Dibujable dibujable) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public String getNombreClase() {
-		// TODO Auto-generated method stub
-		return null;
+	public void setFondo(Dibujable fondo) {
+		this.fondo=fondo;
 	}
 
 	public Object clone() {
@@ -44,7 +31,8 @@ public class Fijo extends Elemento {
 		this.tipo = tipo;
 	}
 
-	private Fijo(TipoFijo tipo) {
+	public Fijo(TipoFijo tipo, Dibujable fondo) {
+		super(fondo);
 		this.tipo = tipo;
 	}
 }

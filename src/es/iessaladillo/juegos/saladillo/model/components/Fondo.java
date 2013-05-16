@@ -7,27 +7,16 @@ public class Fondo extends Elemento {
 	private TipoFondo tipo;
 	
 	public String getNombreImagen() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public boolean contieneFondo() {
-		// TODO Auto-generated method stub
-		return false;
+		return tipo.name();
 	}
 
 	public Dibujable getFondo() {
 		return null;
 	}
 
-	public void setFondo(Dibujable dibujable) {
-		// TODO Auto-generated method stub
+	public void setFondo(Dibujable fondo) {
+		this.fondo=fondo;
 
-	}
-
-	public String getNombreClase() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 	public Object clone() {
@@ -43,7 +32,8 @@ public class Fondo extends Elemento {
 		this.tipo = tipo;
 	}
 
-	private Fondo(TipoFondo tipo) {
+	public Fondo(TipoFondo tipo, Dibujable fondo) {
+		super(fondo);
 		this.tipo = tipo;
 	}
 
