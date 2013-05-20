@@ -49,11 +49,62 @@ public class Mapa implements MapaInterface {
 		if(dibujables[x][y]==null)
 			dibujables[x][y]=dibujable;
 		else{
-			if(dibujable instanceof Fondo && dibujables[x][y].contieneFondo()==false)
-				dibujables[x][y]=dibujable;
-			
-			else if(dibujable instanceof Diamante){
+			if(dibujable instanceof Heroe){
+				if(dibujables[x][y].contieneFondo()){
+					dibujable.setFondo(dibujables[x][y]);
+					dibujables[x][y]=dibujable;
+					posicionHeroe=new Posicion(x,y);
+				}
 				
+				else{
+					dibujables[x][y]=dibujable;
+					posicionHeroe=new Posicion(x,y);
+				}
+					
+			}
+			
+			if(dibujable instanceof Diamante){
+				if(dibujables[x][y].contieneFondo()){
+					dibujable.setFondo(dibujables[x][y]);
+					dibujables[x][y]=dibujable;
+					numDiamantes++;
+				}
+				
+				else{
+					dibujables[x][y]=dibujable;
+					numDiamantes++;
+				}
+			}
+			
+			if(dibujable instanceof Teletransporte){
+				String tipo=((Teletransporte) dibujable).getTipo().toString().toLowerCase();
+				
+				switch(tipo){
+				case "teletransporterojo":
+					if(dibujables[x][y].contieneFondo()){
+						dibujable.setFondo(dibujables[x][y]);
+						dibujables[x][y]=dibujable;
+						posicionesTeletransporteRojo.anhadirPosicion(new Posicion(x,y));
+					}
+					
+					else{
+						dibujables[x][y]=dibujable;
+						posicionesTeletransporteRojo.anhadirPosicion(new Posicion(x,y));
+					}
+					break;
+				case "teletransporteazul":
+					if(dibujables[x][y].contieneFondo()){
+						dibujable.setFondo(dibujables[x][y]);
+						dibujables[x][y]=dibujable;
+						posicionesTeletransporteAzul.anhadirPosicion(new Posicion(x,y));
+					}
+					
+					else{
+						dibujables[x][y]=dibujable;
+						posicionesTeletransporteAzul.anhadirPosicion(new Posicion(x,y));
+					}
+					break;
+				}
 			}
 				
 		}
@@ -95,6 +146,8 @@ public class Mapa implements MapaInterface {
 	}
 	
 	public Object clone(){
+		
+		
 		return dibujables;
 		
 	}
