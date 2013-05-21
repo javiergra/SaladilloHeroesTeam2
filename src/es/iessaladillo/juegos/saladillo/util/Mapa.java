@@ -135,12 +135,12 @@ public class Mapa implements MapaInterface, Cloneable {
 					numDiamantes++;
 				else if(dibujables[i][j] instanceof Heroe)
 					posicionHeroe=new Posicion(i,j);
-				/*else if(dibujables[i][j] instanceof Teletransporte){
-					if(((Teletransporte) dibujables[i][j]).getTipo())
+				else if(dibujables[i][j] instanceof Teletransporte){
+					/*if((Teletransporte) dibujables[i][j].getTipo())
 						posicionesTeletransporteRojo.anhadirPosicion(new Posicion(i,j));
 					else
-						posicionesTeletransporteAzul.anhadirPosicion(new Posicion(i,j));
-				}	*/
+						posicionesTeletransporteAzul.anhadirPosicion(new Posicion(i,j));*/
+				}	
 			}
 		}
 	}
