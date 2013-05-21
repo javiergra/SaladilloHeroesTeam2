@@ -23,7 +23,6 @@ public class Teletransporte extends Elemento {
 	}
 
 	public Object clone() {
-		Teletransporte t=(Teletransporte) super.clone();
-		return t;
+		return new Teletransporte(tipo, fondo);
 	}
 }

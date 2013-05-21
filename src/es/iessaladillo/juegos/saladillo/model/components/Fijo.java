@@ -18,10 +18,6 @@ public class Fijo extends Elemento {
 		this.fondo=fondo;
 	}
 
-	public Object clone() {
-		Fijo f=(Fijo) super.clone();
-		return f;
-	}
 
 	public TipoFijo getTipo() {
 		return tipo;
@@ -34,5 +30,10 @@ public class Fijo extends Elemento {
 	public Fijo(TipoFijo tipo, Dibujable fondo) {
 		super(fondo);
 		this.tipo = tipo;
+	}
+	
+	public Object clone() {
+		return new Fijo(tipo, fondo);
+		
 	}
 }

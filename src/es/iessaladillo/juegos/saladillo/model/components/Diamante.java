@@ -7,4 +7,8 @@ public class Diamante extends Elemento {
 	public Diamante(Dibujable fondo){
 		super(fondo);
 	}
+	
+	public Object clone() {
+		return new Diamante(fondo);
+	}
 }

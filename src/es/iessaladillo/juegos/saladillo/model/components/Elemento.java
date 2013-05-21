@@ -6,7 +6,6 @@ public class Elemento implements Dibujable {
 
 	protected Dibujable fondo;
 	
-	
 	@Override
 	public String getNombreImagen() {
 		return null;
@@ -34,12 +33,7 @@ public class Elemento implements Dibujable {
 	}
 
 	public Object clone() {
-		try{
-			Elemento e=(Elemento) super.clone();
-			return e;
-		}catch(CloneNotSupportedException cnse){
-			return null;
-		}
+		return new Elemento(fondo);
 	}
 
 	public Elemento(Dibujable fondo) {

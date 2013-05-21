@@ -8,8 +8,6 @@ package es.iessaladillo.juegos.saladillo.util;
  */
 
 public class Posicion {
-	
-
 	private int x;
 	private int y;
 	
@@ -21,14 +19,9 @@ public class Posicion {
 	
 	public Posicion(int x, int y){
 		this.x=x;
-		this.y=y;
-		
-		
+		this.y=y;		
 	}
-	
-	
-
-	
+		
 	/**
 	 * @return Coordenada x del mapa
 	 */
@@ -77,5 +70,8 @@ public class Posicion {
 			return false;
 		return true;
 	}
-
+	
+	public Object clone() {
+		return new Posicion(x, y);
+	}
 }
