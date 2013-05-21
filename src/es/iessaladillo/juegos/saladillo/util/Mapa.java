@@ -50,61 +50,59 @@ public class Mapa implements MapaInterface, Cloneable {
 			dibujables[x][y]=dibujable;
 		else{
 			if(dibujable instanceof Heroe){
-				if(dibujables[x][y].contieneFondo()){
+				if(dibujables[x][y].contieneFondo() && dibujables[x][y] instanceof Teletransporte){
 					dibujable.setFondo(dibujables[x][y]);
 					dibujables[x][y]=dibujable;
 					posicionHeroe=new Posicion(x,y);
 				}
 				
 				else{
-					dibujables[x][y]=dibujable;
-					posicionHeroe=new Posicion(x,y);
+					if(!dibujables[x][y].contieneFondo()){
+						dibujable.setFondo(dibujables[x][y]);
+						dibujables[x][y]=dibujable;
+						posicionHeroe=new Posicion(x,y);
+					}
 				}
 					
 			}
 			
 			if(dibujable instanceof Diamante){
-				if(dibujables[x][y].contieneFondo()){
+				if(!dibujables[x][y].contieneFondo()){
 					dibujable.setFondo(dibujables[x][y]);
-					dibujables[x][y]=dibujable;
-					numDiamantes++;
-				}
-				
-				else{
 					dibujables[x][y]=dibujable;
 					numDiamantes++;
 				}
 			}
 			
 			if(dibujable instanceof Teletransporte){
-				String tipo=((Teletransporte) dibujable).getTipo().toString().toLowerCase();
 				
-				switch(tipo){
+				switch(((Teletransporte) dibujable).getTipo().toString().toLowerCase()){
 				case "teletransporterojo":
-					if(dibujables[x][y].contieneFondo()){
+					if(!dibujables[x][y].contieneFondo()){
 						dibujable.setFondo(dibujables[x][y]);
-						dibujables[x][y]=dibujable;
-						posicionesTeletransporteRojo.anhadirPosicion(new Posicion(x,y));
-					}
-					
-					else{
 						dibujables[x][y]=dibujable;
 						posicionesTeletransporteRojo.anhadirPosicion(new Posicion(x,y));
 					}
 					break;
 				case "teletransporteazul":
-					if(dibujables[x][y].contieneFondo()){
+					if(!dibujables[x][y].contieneFondo()){
 						dibujable.setFondo(dibujables[x][y]);
-						dibujables[x][y]=dibujable;
-						posicionesTeletransporteAzul.anhadirPosicion(new Posicion(x,y));
-					}
-					
-					else{
 						dibujables[x][y]=dibujable;
 						posicionesTeletransporteAzul.anhadirPosicion(new Posicion(x,y));
 					}
 					break;
 				}
+			}
+			
+			if (dibujable instanceof Fijo){
+				if(!dibujables[x][y].contieneFondo()){
+					dibujable.setFondo(dibujables[x][y]);
+					dibujables[x][y]=dibujable;
+				}
+			}
+			
+			if (dibujable instanceof Fondo){
+				dibujables[x][y].setFondo(dibujable);
 			}
 				
 		}
@@ -116,7 +114,12 @@ public class Mapa implements MapaInterface, Cloneable {
 		int x=posicion.getX();
 		int y=posicion.getY();
 		
-		dibujables[x][y]=null;
+		if(!dibujables[x][y].contieneFondo())
+			dibujables[x][y]=null;
+		else{
+			dibujables[x][y]=dibujables[x][y].getFondo();
+		}
+			
 	}
 	
 	public String toString(){
@@ -136,24 +139,89 @@ public class Mapa implements MapaInterface, Cloneable {
 				else if(dibujables[i][j] instanceof Heroe)
 					posicionHeroe=new Posicion(i,j);
 				else if(dibujables[i][j] instanceof Teletransporte){
-					/*if((Teletransporte) dibujables[i][j].getTipo())
-						posicionesTeletransporteRojo.anhadirPosicion(new Posicion(i,j));
-					else
-						posicionesTeletransporteAzul.anhadirPosicion(new Posicion(i,j));*/
-				}	
+					Teletransporte t = (Teletransporte) dibujables[i][j];
+					if(TipoTeletransporte.getTipo(t.getTipo().name())){
+						posicionesTeletransporteRojo.anhadirPosicion(new Posicion(i, j));
+					}
+					else posicionesTeletransporteAzul.anhadirPosicion(new Posicion(i, j));
+				}
 			}
 		}
 	}
 	
 	public Object clone(){
 		
-		try{
-			Dibujable dibujable=(Dibujable)super.clone();
-			return dibujable;
-		}catch(CloneNotSupportedException e){
-			return null;
-		}
+		Mapa mapa = new Mapa();
+		mapa.setDibujables(dibujables.clone());
+		mapa.setNumDiamantes(numDiamantes);
+		mapa.setPosicionesAActualizar((ConjuntoPosiciones) posicionesAActualizar.clone());
+		mapa.setPosicionesTeletransporteAzul((ConjuntoPosiciones)posicionesTeletransporteAzul.clone());
+		mapa.setPosicionesTeletransporteRojo((ConjuntoPosiciones)posicionesTeletransporteRojo.clone());
+		mapa.setPosicionHeroe((Posicion)posicionHeroe.clone());
+		return mapa;
 		
+	}
+
+
+	public Dibujable[][] getDibujables() {
+		return dibujables;
+	}
+
+
+	public void setDibujables(Dibujable[][] dibujables) {
+		this.dibujables = dibujables;
+	}
+
+
+	public int getNumDiamantes() {
+		return numDiamantes;
+	}
+
+
+	public void setNumDiamantes(int numDiamantes) {
+		this.numDiamantes = numDiamantes;
+	}
+
+
+	public ConjuntoPosiciones getPosicionesAActualizar() {
+		return posicionesAActualizar;
+	}
+
+
+	public void setPosicionesAActualizar(ConjuntoPosiciones posicionesAActualizar) {
+		this.posicionesAActualizar = posicionesAActualizar;
+	}
+
+
+	public ConjuntoPosiciones getPosicionesTeletransporteAzul() {
+		return posicionesTeletransporteAzul;
+	}
+
+
+	public void setPosicionesTeletransporteAzul(
+			ConjuntoPosiciones posicionesTeletransporteAzul) {
+		this.posicionesTeletransporteAzul = posicionesTeletransporteAzul;
+	}
+
+
+	public ConjuntoPosiciones getPosicionesTeletransporteRojo() {
+		return posicionesTeletransporteRojo;
+	}
+
+
+	public void setPosicionesTeletransporteRojo(
+			ConjuntoPosiciones posicionesTeletransporteRojo) {
+		this.posicionesTeletransporteRojo = posicionesTeletransporteRojo;
+	}
+
+
+	public void setPosicionHeroe(Posicion posicionHeroe) {
+		this.posicionHeroe = posicionHeroe;
+	}
+
+
+	public Mapa() {
+		super();
 	}
 	
 }
