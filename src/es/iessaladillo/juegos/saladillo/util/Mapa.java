@@ -11,7 +11,7 @@ import es.iessaladillo.juegos.saladillo.model.components.*;
  *
  */
 
-public class Mapa implements MapaInterface {
+public class Mapa implements MapaInterface, Cloneable {
 	Dibujable[][] dibujables;
 	int numDiamantes;
 	Posicion posicionHeroe;
@@ -147,8 +147,12 @@ public class Mapa implements MapaInterface {
 	
 	public Object clone(){
 		
-		
-		return dibujables;
+		try{
+			Dibujable dibujable=(Dibujable)super.clone();
+			return dibujable;
+		}catch(CloneNotSupportedException e){
+			return null;
+		}
 		
 	}
 	
