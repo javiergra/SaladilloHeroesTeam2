@@ -23,7 +23,7 @@ public interface SaladilloFacadeDelegate {
  /** Mueve al heroe en la dirección indicada */
  public MapaInterface mover(Direccion direccion);
  /** Reinicia el nivel */
- public MapaInterface	 reiniciarNivel();
+ public MapaInterface reiniciarNivel();
  /** Indica la posición actual del heroe */
  public Posicion getPosicionHeroe();
  /** Indica el número de diamantes pendientes por recoger en el mapa */

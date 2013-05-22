@@ -2,6 +2,7 @@ package es.iessaladillo.juegos.saladillo.model;
 
 import es.iessaladillo.juegos.saladillo.controller.MapaInterface;
 import es.iessaladillo.juegos.saladillo.model.action.AccionCargarMapa;
+import es.iessaladillo.juegos.saladillo.model.action.AccionReiniciarNivel;
 import es.iessaladillo.juegos.saladillo.model.delegate.SaladilloFacadeDelegate;
 import es.iessaladillo.juegos.saladillo.util.ConjuntoPosiciones;
 import es.iessaladillo.juegos.saladillo.util.Direccion;
@@ -11,6 +12,7 @@ import es.iessaladillo.juegos.saladillo.util.Posicion;
 public class SaladilloFacade implements SaladilloFacadeDelegate {
 	
 	private MapaInterface mapa;
+	private MapaInterface mapaOriginal;
 	
 	@Override
 	public MapaInterface mapaFromEntidades(Entidad[] entidades) {
@@ -37,8 +39,7 @@ public class SaladilloFacade implements SaladilloFacadeDelegate {
 
 	@Override
 	public MapaInterface reiniciarNivel() {
-		// TODO Auto-generated method stub
-		return null;
+		return (MapaInterface) new AccionReiniciarNivel(mapaOriginal).ejecutar();
 	}
 
 	@Override
