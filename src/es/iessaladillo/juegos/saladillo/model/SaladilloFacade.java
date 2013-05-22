@@ -14,8 +14,8 @@ import es.iessaladillo.juegos.saladillo.util.Posicion;
 
 public class SaladilloFacade implements SaladilloFacadeDelegate {
 	
-	private MapaInterface mapa;
-	private MapaInterface mapaOriginal;
+	private Mapa mapa;
+	private Mapa mapaOriginal;
 	
 	@Override
 	public MapaInterface mapaFromEntidades(Entidad[] entidades) {
@@ -31,7 +31,7 @@ public class SaladilloFacade implements SaladilloFacadeDelegate {
 
 	@Override
 	public void cargarMapa(MapaInterface mapa) {
-		this.setMapa((MapaInterface) new AccionCargarMapa(mapa).ejecutar());
+		this.setMapa((Mapa) new AccionCargarMapa(mapa).ejecutar());
 	}
 
 	@Override
@@ -42,7 +42,7 @@ public class SaladilloFacade implements SaladilloFacadeDelegate {
 
 	@Override
 	public MapaInterface reiniciarNivel() {
-		return (MapaInterface) new AccionReiniciarNivel(mapaOriginal).ejecutar();
+		return (Mapa) new AccionReiniciarNivel(mapaOriginal).ejecutar();
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class SaladilloFacade implements SaladilloFacadeDelegate {
 
 	@Override
 	public int diamantesEnMapa() {
-		return (int) new AccionDiamantesEnMapa(Mapa.numDiamantes).ejecutar();
+		return (int) new AccionDiamantesEnMapa(mapa).ejecutar();
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class SaladilloFacade implements SaladilloFacadeDelegate {
 		return mapa;
 	}
 
-	public void setMapa(MapaInterface mapa) {
+	public void setMapa(Mapa mapa) {
 		this.mapa = mapa;
 	}
 

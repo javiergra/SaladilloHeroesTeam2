@@ -13,7 +13,7 @@ import es.iessaladillo.juegos.saladillo.util.*;
 
 public class Mapa implements MapaInterface, Cloneable {
 	private Dibujable[][] dibujables;
-	public static int numDiamantes;
+	private int numDiamantes;
 	private Posicion posicionHeroe;
 	private ConjuntoPosiciones posicionesAActualizar, posicionesTeletransporteAzul, posicionesTeletransporteRojo;
 	
@@ -169,7 +169,7 @@ public class Mapa implements MapaInterface, Cloneable {
 
 
 	public void setNumDiamantes(int numDiamantes) {
-		Mapa.numDiamantes = numDiamantes;
+		this.numDiamantes = numDiamantes;
 	}
 
 
