@@ -28,19 +28,13 @@ public class Mapa implements MapaInterface, Cloneable {
 	
 	@Override
 	public Dibujable obtenerPosicion(Posicion posicion) {
-		int x=posicion.getX();
-		int y=posicion.getY();
-		
-		return dibujables[x][y];
+		return dibujables[posicion.getX()][posicion.getY()];
 	}
 
 	
 	@Override
 	public Posicion getPosicionHeroe() {
-		int x=posicionHeroe.getX();
-		int y=posicionHeroe.getY();
-		
-		return new Posicion(x,y);
+		return new Posicion(posicionHeroe.getX(),posicionHeroe.getY());
 	}
 
 	@Override
