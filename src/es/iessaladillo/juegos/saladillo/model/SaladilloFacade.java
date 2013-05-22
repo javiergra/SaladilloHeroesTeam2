@@ -2,8 +2,10 @@ package es.iessaladillo.juegos.saladillo.model;
 
 import es.iessaladillo.juegos.saladillo.controller.MapaInterface;
 import es.iessaladillo.juegos.saladillo.model.action.AccionCargarMapa;
+import es.iessaladillo.juegos.saladillo.model.action.AccionDiamantesEnMapa;
 import es.iessaladillo.juegos.saladillo.model.action.AccionGetPosicionHeroe;
 import es.iessaladillo.juegos.saladillo.model.action.AccionReiniciarNivel;
+import es.iessaladillo.juegos.saladillo.model.components.Mapa;
 import es.iessaladillo.juegos.saladillo.model.delegate.SaladilloFacadeDelegate;
 import es.iessaladillo.juegos.saladillo.util.ConjuntoPosiciones;
 import es.iessaladillo.juegos.saladillo.util.Direccion;
@@ -50,8 +52,7 @@ public class SaladilloFacade implements SaladilloFacadeDelegate {
 
 	@Override
 	public int diamantesEnMapa() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int) new AccionDiamantesEnMapa(Mapa.numDiamantes).ejecutar();
 	}
 
 	@Override
