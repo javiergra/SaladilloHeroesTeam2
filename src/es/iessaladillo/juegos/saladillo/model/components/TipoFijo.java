@@ -41,4 +41,28 @@ public enum TipoFijo {
 			return false;
 		}
 	}
+	
+	/**
+	 * 
+	 * @param s <code>String</code> que refleja el tipo de Elemento a buscar
+	 * @return Objeto enumerado o <code>null</code> en caso de que no sea Tipo Fijo.
+	 */
+	public static TipoFijo getTipo(String s) {
+		switch(s) {
+		case "Caja": return Caja;
+		case "PelotaAzul": return PelotaAzul;
+		case "PelotaRoja": return PelotaRoja;
+		case "PelotaVerde": return PelotaVerde;
+		case "PelotaNaranja": return PelotaNaranja;
+		case "BolaPiedra": return BolaPiedra;
+		case "Arbol": return Arbol;
+		case "Casa": return Casa;
+		case "Edificio": return Edificio;
+		case "Edificio2": return Edificio2;
+		case "Matorral": return Matorral;
+		case "RocaSuelo": return RocaSuelo;
+		}
+		
+		return null;
+	}
 }

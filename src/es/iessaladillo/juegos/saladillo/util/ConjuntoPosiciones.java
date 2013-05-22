@@ -5,13 +5,13 @@ import java.util.Iterator;
 
 public class ConjuntoPosiciones {
 	
-	private ArrayList <Posicion> posiciones;
+	private ArrayList<Posicion> posiciones;
 
 	public ConjuntoPosiciones() {
 		posiciones = new ArrayList<Posicion>();
 	}
 
-	public	void anhadirPosicion(Posicion posicion){
+	public void anhadirPosicion(Posicion posicion){
 		posiciones.add(posicion);
 	}
 

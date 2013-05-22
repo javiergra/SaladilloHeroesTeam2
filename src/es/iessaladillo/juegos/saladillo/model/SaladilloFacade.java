@@ -4,6 +4,7 @@ import es.iessaladillo.juegos.saladillo.controller.MapaInterface;
 import es.iessaladillo.juegos.saladillo.model.action.AccionCargarMapa;
 import es.iessaladillo.juegos.saladillo.model.action.AccionDiamantesEnMapa;
 import es.iessaladillo.juegos.saladillo.model.action.AccionGetPosicionHeroe;
+import es.iessaladillo.juegos.saladillo.model.action.AccionMapaFromEntidades;
 import es.iessaladillo.juegos.saladillo.model.action.AccionReiniciarNivel;
 import es.iessaladillo.juegos.saladillo.model.components.Mapa;
 import es.iessaladillo.juegos.saladillo.model.delegate.SaladilloFacadeDelegate;
@@ -19,19 +20,17 @@ public class SaladilloFacade implements SaladilloFacadeDelegate {
 	
 	@Override
 	public MapaInterface mapaFromEntidades(Entidad[] entidades) {
-		// TODO Auto-generated method stub
-		return null;
+		return (MapaInterface) new AccionMapaFromEntidades(entidades).ejecutar();
 	}
 
 	@Override
 	public void cargarMapa(Entidad[] entidades) {
-		// TODO Auto-generated method stub
-
+		this.mapa = (Mapa) new AccionCargarMapa( (MapaInterface) new AccionMapaFromEntidades(entidades).ejecutar() ).ejecutar();
 	}
 
 	@Override
 	public void cargarMapa(MapaInterface mapa) {
-		this.setMapa((Mapa) new AccionCargarMapa(mapa).ejecutar());
+		this.mapa = ((Mapa) new AccionCargarMapa(mapa).ejecutar());
 	}
 
 	@Override

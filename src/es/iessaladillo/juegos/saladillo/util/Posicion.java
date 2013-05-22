@@ -16,10 +16,9 @@ public class Posicion {
 	 * @param x Coordenada x del mapa
 	 * @param y Coordenada y del mapa
 	 */
-	
 	public Posicion(int x, int y){
-		this.x=x;
-		this.y=y;		
+		this.x = x;
+		this.y = y;		
 	}
 		
 	/**
@@ -51,9 +50,6 @@ public class Posicion {
 	public String toString() {
 		return "Posicion [x=" + x + ", y=" + y + "]";
 	}
-
-
-
 
 	@Override
 	public boolean equals(Object obj) {

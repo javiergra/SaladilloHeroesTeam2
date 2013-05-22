@@ -7,7 +7,7 @@ public class Heroe extends Elemento {
 	public Heroe(Dibujable fondo){
 		super(fondo);
 	}
-	
+
 	public Object clone() {
 		return new Heroe(fondo);
 	}

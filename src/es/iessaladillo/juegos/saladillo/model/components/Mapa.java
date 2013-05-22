@@ -16,21 +16,21 @@ public class Mapa implements MapaInterface, Cloneable {
 	private int numDiamantes;
 	private Posicion posicionHeroe;
 	private ConjuntoPosiciones posicionesAActualizar, posicionesTeletransporteAzul, posicionesTeletransporteRojo;
-	
-	 
-	
+		
 	public Mapa(Dibujable[][] dibujables){
 		this.dibujables = dibujables;
 		
+		posicionesAActualizar = new ConjuntoPosiciones();
+		posicionesTeletransporteAzul = new ConjuntoPosiciones();
+		posicionesTeletransporteRojo = new ConjuntoPosiciones();
+		
 		construirMapa();
 	}
-	
 	
 	@Override
 	public Dibujable obtenerPosicion(Posicion posicion) {
 		return dibujables[posicion.getX()][posicion.getY()];
 	}
-
 	
 	@Override
 	public Posicion getPosicionHeroe() {

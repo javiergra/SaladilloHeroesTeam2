@@ -5,8 +5,6 @@ package es.iessaladillo.juegos.saladillo.util;
  * Entidades definidas por un tipo y por dos posiciones sobre un mapa bidimensional
  */
 public class Entidad {
-
-
 	String tipo;
 	int x;
 	int y;
@@ -29,7 +27,6 @@ public class Entidad {
 	public void setY(int y) {
 		this.y = y;
 	}
-
 
 	@Override
 	public String toString() {
