@@ -12,15 +12,17 @@ import es.iessaladillo.juegos.saladillo.model.components.*;
  */
 
 public class Mapa implements MapaInterface, Cloneable {
-	Dibujable[][] dibujables;
-	int numDiamantes;
-	Posicion posicionHeroe;
-	ConjuntoPosiciones posicionesAActualizar, posicionesTeletransporteAzul, posicionesTeletransporteRojo;
+	private Dibujable[][] dibujables;
+	private int numDiamantes;
+	private Posicion posicionHeroe;
+	private ConjuntoPosiciones posicionesAActualizar, posicionesTeletransporteAzul, posicionesTeletransporteRojo;
 	
 	 
 	
 	public Mapa(Dibujable[][] dibujables){
-		construirMapa(dibujables);
+		this.dibujables = dibujables;
+		
+		construirMapa();
 	}
 	
 	
@@ -66,7 +68,7 @@ public class Mapa implements MapaInterface, Cloneable {
 					
 			}
 			
-			if(dibujable instanceof Diamante){
+			else if(dibujable instanceof Diamante){
 				if(!dibujables[x][y].contieneFondo()){
 					dibujable.setFondo(dibujables[x][y]);
 					dibujables[x][y]=dibujable;
@@ -74,7 +76,7 @@ public class Mapa implements MapaInterface, Cloneable {
 				}
 			}
 			
-			if(dibujable instanceof Teletransporte){
+			else if(dibujable instanceof Teletransporte){
 				
 				switch(((Teletransporte) dibujable).getTipo().toString().toLowerCase()){
 				case "teletransporterojo":
@@ -94,14 +96,14 @@ public class Mapa implements MapaInterface, Cloneable {
 				}
 			}
 			
-			if (dibujable instanceof Fijo){
+			else if (dibujable instanceof Fijo){
 				if(!dibujables[x][y].contieneFondo()){
 					dibujable.setFondo(dibujables[x][y]);
 					dibujables[x][y]=dibujable;
 				}
 			}
 			
-			if (dibujable instanceof Fondo){
+			else if (dibujable instanceof Fondo){
 				dibujables[x][y].setFondo(dibujable);
 			}
 				
@@ -122,13 +124,7 @@ public class Mapa implements MapaInterface, Cloneable {
 			
 	}
 	
-	public String toString(){
-		String mapa="";
-		
-		return mapa;
-	}
-	
-	public void construirMapa(Dibujable[][] dibujables){
+	public void construirMapa(){
 		int i, j;
 		
 		for(i=0;i<dibujables.length;i++){
@@ -220,7 +216,7 @@ public class Mapa implements MapaInterface, Cloneable {
 	}
 
 
-	public Mapa() {
+	private Mapa() {
 		super();
 	}
 	
