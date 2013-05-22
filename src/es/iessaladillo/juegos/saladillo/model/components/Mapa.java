@@ -1,10 +1,10 @@
 /**
  * 
  */
-package es.iessaladillo.juegos.saladillo.util;
+package es.iessaladillo.juegos.saladillo.model.components;
 
 import es.iessaladillo.juegos.saladillo.controller.*;
-import es.iessaladillo.juegos.saladillo.model.components.*;
+import es.iessaladillo.juegos.saladillo.util.*;
 
 /**
  * @author Patricia
