@@ -2,6 +2,7 @@ package es.iessaladillo.juegos.saladillo.model;
 
 import es.iessaladillo.juegos.saladillo.controller.MapaInterface;
 import es.iessaladillo.juegos.saladillo.model.action.AccionCargarMapa;
+import es.iessaladillo.juegos.saladillo.model.action.AccionGetPosicionHeroe;
 import es.iessaladillo.juegos.saladillo.model.action.AccionReiniciarNivel;
 import es.iessaladillo.juegos.saladillo.model.delegate.SaladilloFacadeDelegate;
 import es.iessaladillo.juegos.saladillo.util.ConjuntoPosiciones;
@@ -44,8 +45,7 @@ public class SaladilloFacade implements SaladilloFacadeDelegate {
 
 	@Override
 	public Posicion getPosicionHeroe() {
-		// TODO Auto-generated method stub
-		return null;
+		return (Posicion) new AccionGetPosicionHeroe(mapa.getPosicionHeroe()).ejecutar();
 	}
 
 	@Override
