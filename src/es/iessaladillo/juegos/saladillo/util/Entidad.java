@@ -9,6 +9,11 @@ public class Entidad {
 	int x;
 	int y;
 	
+	public Entidad(String tipo, int x, int y) {
+		this.tipo = tipo;
+		this.x = x;
+		this.y = y;
+	}
 	public String getTipo() {
 		return tipo;
 	}
