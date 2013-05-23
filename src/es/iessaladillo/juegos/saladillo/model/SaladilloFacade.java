@@ -71,7 +71,6 @@ public class SaladilloFacade implements SaladilloFacadeDelegate {
 
 	@Override
 	public String mapaToAscii(MapaInterface mapa) {
-		// TODO Auto-generated method stub
 		return (String) new AccionMapaToAscii(mapa).ejecutar();
 	}
 

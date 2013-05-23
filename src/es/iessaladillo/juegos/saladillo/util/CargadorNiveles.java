@@ -11,6 +11,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import es.iessaladillo.juegos.saladillo.model.SaladilloFacade;
+
 
 
 public class CargadorNiveles {
@@ -66,8 +68,12 @@ public class CargadorNiveles {
 	
 	static public void main(String args[]){
 		
-		ArrayList<Entidad> entidades =cargarNivel("src/1.lvl");
-		System.out.println(entidades);
+		ArrayList<Entidad> entidades = cargarNivel("src/1.lvl");
+		//System.out.println(entidades);
+		SaladilloFacade f = new SaladilloFacade();
+		f.cargarMapa(entidades.toArray(new Entidad[entidades.size()]));
+		System.out.println(f.mapaToAscii(f.mapaFromEntidades(entidades.toArray(new Entidad[entidades.size()]))));
+		
 	}
 	
 }
