@@ -49,7 +49,7 @@ public class AccionMapaFromEntidades implements Accion {
 			
 			// De no haber dibujable en el array, pone el elemento directamente en el array.
 			if((c = dibujables[e.getY()][e.getX()]) == null) {
-				c = d;
+				dibujables[e.getY()][e.getX()] = d;
 				
 			} else {
 				d.setFondo(c);

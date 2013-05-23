@@ -72,7 +72,12 @@ public class CargadorNiveles {
 		//System.out.println(entidades);
 		SaladilloFacade f = new SaladilloFacade();
 		f.cargarMapa(entidades.toArray(new Entidad[entidades.size()]));
-		System.out.println(f.mapaToAscii(f.mapaFromEntidades(entidades.toArray(new Entidad[entidades.size()]))));
+		
+		System.out.println(
+				f.mapaToAscii(
+						f.mapaFromEntidades(
+								entidades.toArray(
+										new Entidad[entidades.size()]))));
 		
 	}
 	
