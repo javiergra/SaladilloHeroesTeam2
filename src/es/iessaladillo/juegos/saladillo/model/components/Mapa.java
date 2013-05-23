@@ -34,24 +34,42 @@ public class Mapa implements MapaInterface, Cloneable {
 
 	@Override
 	public void ponerElemento(Posicion posicion, Dibujable dibujable) {
+		int x = posicion.getX(), y = posicion.getY();
+		
+		Dibujable d = dibujables[x][y];
+		
+		if(dibujable instanceof Heroe)  {
+			if(d instanceof Diamante) {
+				dibujable.setFondo(d.getFondo());
+				dibujables[x][y] = dibujable;
+				numDiamantes--;
+				
+			} else if (d instanceof Teletransporte) {
+				// TODO Añadir metodo teletransportar. 
+				dibujable.setFondo(d);
+				
+			}
+		}
+		
+		/*
 		int x=posicion.getX();
 		int y=posicion.getY();
 		
-		if(dibujables[x][y]==null)
-			dibujables[x][y]=dibujable;
+		Dibujable d = dibujables[x][y];
+		
+		if(d == null)
+			dibujables[x][y] = dibujable;
 		else{
 			if(dibujable instanceof Heroe){
-				if(dibujables[x][y].contieneFondo() && dibujables[x][y] instanceof Teletransporte){
-					dibujable.setFondo(dibujables[x][y]);
-					dibujables[x][y]=dibujable;
-					posicionHeroe=new Posicion(x,y);
-				}
-				
-				else{
-					if(!dibujables[x][y].contieneFondo()){
-						dibujable.setFondo(dibujables[x][y]);
-						dibujables[x][y]=dibujable;
-						posicionHeroe=new Posicion(x,y);
+				if(d.contieneFondo() && d instanceof Teletransporte){
+					dibujable.setFondo(d);
+					dibujables[x][y] = dibujable;
+					posicionHeroe = new Posicion(x,y);
+				} else{
+					if(!d.contieneFondo()){
+						dibujable.setFondo(d);
+						dibujables[x][y] = dibujable;
+						posicionHeroe = new Posicion(x,y);
 					}
 				}
 					
@@ -98,7 +116,7 @@ public class Mapa implements MapaInterface, Cloneable {
 				
 		}
 		
-
+		*/
 	}
 	
 	public void eliminarElemento(Posicion posicion){
