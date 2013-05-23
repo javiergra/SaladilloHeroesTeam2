@@ -23,8 +23,6 @@ public class AccionMapaToAscii implements Accion {
 		int i,j;
 		int tam=mapa.getDibujables().length;
 		
-		//s+=("  | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 |\n");
-		
 		for (i=0;i<tam;i++) {
 			s+="|";
 			for (j=0;j<tam;j++) {
