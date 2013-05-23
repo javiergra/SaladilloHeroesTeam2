@@ -6,11 +6,6 @@ package es.iessaladillo.juegos.saladillo.model.components;
 import es.iessaladillo.juegos.saladillo.controller.*;
 import es.iessaladillo.juegos.saladillo.util.*;
 
-/**
- * @author Patricia
- *
- */
-
 public class Mapa implements MapaInterface, Cloneable {
 	private Dibujable[][] dibujables;
 	private int numDiamantes;
@@ -140,7 +135,6 @@ public class Mapa implements MapaInterface, Cloneable {
 	}
 	
 	public Object clone(){
-		
 		Mapa mapa = new Mapa();
 		mapa.setDibujables(dibujables.clone());
 		mapa.setNumDiamantes(numDiamantes);
@@ -148,6 +142,7 @@ public class Mapa implements MapaInterface, Cloneable {
 		mapa.setPosicionesTeletransporteAzul((ConjuntoPosiciones)posicionesTeletransporteAzul.clone());
 		mapa.setPosicionesTeletransporteRojo((ConjuntoPosiciones)posicionesTeletransporteRojo.clone());
 		mapa.setPosicionHeroe((Posicion)posicionHeroe.clone());
+		
 		return mapa;
 		
 	}

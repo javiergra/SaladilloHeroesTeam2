@@ -52,12 +52,8 @@ public class AccionMapaFromEntidades implements Accion {
 				c = d;
 				
 			} else {
-				// De haberlo, se procede a bajar niveles hasta que se coloque el elemento.
-				while(c.contieneFondo()) {
-					c = c.getFondo();
-				}
-				
-				c.setFondo(d);
+				d.setFondo(c);
+				dibujables[e.getY()][e.getX()] = d;
 			}
 		}
 		
