@@ -3,6 +3,8 @@ package es.iessaladillo.juegos.saladillo.model.action;
 import es.iessaladillo.juegos.saladillo.controller.Dibujable;
 import es.iessaladillo.juegos.saladillo.model.components.*;
 import es.iessaladillo.juegos.saladillo.util.Entidad;
+import static es.iessaladillo.juegos.saladillo.interfaz.util.GlobalValues.XMAX;
+import static es.iessaladillo.juegos.saladillo.interfaz.util.GlobalValues.YMAX;
 
 public class AccionMapaFromEntidades implements Accion {
 	private Entidad[] entidades;
@@ -13,7 +15,7 @@ public class AccionMapaFromEntidades implements Accion {
 
 	@Override
 	public Object ejecutar() {
-		Dibujable[][] dibujables = new Dibujable[14][14];
+		Dibujable[][] dibujables = new Dibujable[YMAX][XMAX];
 
 		for (Entidad e : entidades) {
 			String s = e.getTipo();

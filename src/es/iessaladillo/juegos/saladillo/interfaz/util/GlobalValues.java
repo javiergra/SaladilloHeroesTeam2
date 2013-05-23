@@ -1,6 +1,6 @@
 package es.iessaladillo.juegos.saladillo.interfaz.util;
 
-public  class GlobalValues {
+public class GlobalValues {
 
 	public static final int CAMERA_WIDTH = 720;
 	public static final int CAMERA_HEIGHT = 480;
