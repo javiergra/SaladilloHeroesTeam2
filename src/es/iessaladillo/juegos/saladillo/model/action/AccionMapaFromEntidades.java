@@ -28,7 +28,7 @@ public class AccionMapaFromEntidades implements Accion {
 				d = new Diamante(null);
 				
 			} else if (s.matches("Teletransporte.*")) {
-				TipoTeletransporte tt = (TipoTeletransporte.getTipo(s) ?
+				TipoTeletransporte tt = (TipoTeletransporte.isRojo(s) ?
 					TipoTeletransporte.TeletransporteRojo :
 					TipoTeletransporte.TeletransporteAzul);
 				

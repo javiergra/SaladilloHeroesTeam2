@@ -14,7 +14,7 @@ public enum TipoTeletransporte {
 	 * 
 	 * @return <code>true</code> si es rojo.
 	 */
-	public static boolean getTipo(String s) {
+	public static boolean isRojo(String s) {
 		return (s.toLowerCase().equals("teletransporterojo")) ? true : false;
 	}
 }

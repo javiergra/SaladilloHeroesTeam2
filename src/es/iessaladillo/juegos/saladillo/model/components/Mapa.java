@@ -125,7 +125,7 @@ public class Mapa implements MapaInterface, Cloneable {
 					posicionHeroe=new Posicion(i,j);
 				else if(dibujables[i][j] instanceof Teletransporte){
 					Teletransporte t = (Teletransporte) dibujables[i][j];
-					if(TipoTeletransporte.getTipo(t.getTipo().name())){
+					if(TipoTeletransporte.isRojo(t.getTipo().name())){
 						posicionesTeletransporteRojo.anhadirPosicion(new Posicion(i, j));
 					}
 					else posicionesTeletransporteAzul.anhadirPosicion(new Posicion(i, j));
