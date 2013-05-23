@@ -30,6 +30,7 @@ public interface SaladilloFacadeDelegate {
  public int diamantesEnMapa();
  /** Devuelve las posiciones que han cambiado tras el último movimiento */
  public ConjuntoPosiciones posicionesAActualizar();
- 
+ /** Devuelve la representacion en Ascii de un mapa */
+ public String mapaToAscii(MapaInterface mapa);
  
 }
