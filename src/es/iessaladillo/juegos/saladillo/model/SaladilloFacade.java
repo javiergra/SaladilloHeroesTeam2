@@ -5,6 +5,7 @@ import es.iessaladillo.juegos.saladillo.model.action.AccionCargarMapa;
 import es.iessaladillo.juegos.saladillo.model.action.AccionDiamantesEnMapa;
 import es.iessaladillo.juegos.saladillo.model.action.AccionGetPosicionHeroe;
 import es.iessaladillo.juegos.saladillo.model.action.AccionMapaFromEntidades;
+import es.iessaladillo.juegos.saladillo.model.action.AccionMapaToAscii;
 import es.iessaladillo.juegos.saladillo.model.action.AccionReiniciarNivel;
 import es.iessaladillo.juegos.saladillo.model.components.Mapa;
 import es.iessaladillo.juegos.saladillo.model.delegate.SaladilloFacadeDelegate;
@@ -66,6 +67,11 @@ public class SaladilloFacade implements SaladilloFacadeDelegate {
 
 	public void setMapa(Mapa mapa) {
 		this.mapa = mapa;
+	}
+
+	@Override
+	public String mapaToAscii(MapaInterface mapa) {
+		return (String) new AccionMapaToAscii(mapa).ejecutar();
 	}
 
 }
