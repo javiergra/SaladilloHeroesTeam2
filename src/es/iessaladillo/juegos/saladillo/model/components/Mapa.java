@@ -39,22 +39,28 @@ public class Mapa implements MapaInterface, Cloneable {
 
 	@Override
 	public void ponerElemento(Posicion posicion, Dibujable dibujable) {
-		int x = posicion.getX(), y = posicion.getY();
 		
-		Dibujable d = dibujables[x][y];
-		
-		if(dibujable instanceof Heroe)  {
-			if(d instanceof Diamante) {
-				dibujable.setFondo(d.getFondo());
-				dibujables[x][y] = dibujable;
+		if(dibujable instanceof Heroe){
+			
+			if(dibujables[posicion.getX()][posicion.getY()] instanceof Diamante){
+				eliminarElemento(posicion);
+				setPosicionHeroe(new Posicion(posicion.getX(), posicion.getY()));
+				dibujable.setFondo(dibujables[posicion.getX()][posicion.getY()]);
+				dibujables[posicion.getX()][posicion.getY()] = dibujable;
 				numDiamantes--;
-				
-			} else if (d instanceof Teletransporte) {
-				// TODO Añadir metodo teletransportar. 
-				dibujable.setFondo(d);
-				
 			}
+			else if(dibujables[posicion.getX()][posicion.getY()] instanceof Fondo){
+				dibujable.setFondo(dibujables[posicion.getX()][posicion.getY()]);
+				dibujables[posicion.getX()][posicion.getY()] = dibujable;
+				setPosicionHeroe(new Posicion(posicion.getX(), posicion.getY()));
+			}
+			else if(dibujables[posicion.getX()][posicion.getY()] instanceof Teletransporte){
+				setPosicionHeroe(new Posicion(posicion.getX(), posicion.getY()));
+				teletransportar();
+			}
+			
 		}
+		
 		
 		/*
 		int x=posicion.getX();
