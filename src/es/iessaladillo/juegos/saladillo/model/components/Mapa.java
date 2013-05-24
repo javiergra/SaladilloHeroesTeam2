@@ -3,8 +3,13 @@
  */
 package es.iessaladillo.juegos.saladillo.model.components;
 
-import es.iessaladillo.juegos.saladillo.controller.*;
-import es.iessaladillo.juegos.saladillo.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import es.iessaladillo.juegos.saladillo.controller.Dibujable;
+import es.iessaladillo.juegos.saladillo.controller.MapaInterface;
+import es.iessaladillo.juegos.saladillo.util.ConjuntoPosiciones;
+import es.iessaladillo.juegos.saladillo.util.Posicion;
 
 public class Mapa implements MapaInterface, Cloneable {
 	private Dibujable[][] dibujables;
@@ -117,6 +122,59 @@ public class Mapa implements MapaInterface, Cloneable {
 		}
 		
 		*/
+	}
+	
+	private void teletransportar(){
+		boolean actualizar = true; 
+		Posicion posicionTeletransportado = null;
+		Heroe heroe = (Heroe) dibujables[posicionHeroe.getX()][posicionHeroe.getY()];
+		Teletransporte teletransporte = (Teletransporte)dibujables[posicionHeroe.getX()][posicionHeroe.getY()].getFondo();
+		TipoTeletransporte tipo = teletransporte.getTipo();
+		Iterator<Posicion> iteradorRojo = getPosicionesTeletransporteRojo().obtenerPosiciones();
+		Iterator<Posicion> iteradorAzul = getPosicionesTeletransporteAzul().obtenerPosiciones();
+		ArrayList<Posicion> listaDePosicionesRojo = new ArrayList<Posicion>();
+		ArrayList<Posicion> listaDePosicionesAzul = new ArrayList<Posicion>();
+		ArrayList<Posicion> listaDePosicionesTotal = new ArrayList<Posicion>();
+		while (iteradorRojo.hasNext())
+			listaDePosicionesRojo.add((Posicion)iteradorRojo.next());
+		while (iteradorAzul.hasNext())
+			listaDePosicionesAzul.add((Posicion)iteradorAzul.next());
+		if(TipoTeletransporte.isRojo(tipo.name())){
+			if(listaDePosicionesRojo.size()>1){
+				do{
+					posicionTeletransportado = listaDePosicionesRojo.get((int) Math.random()*listaDePosicionesRojo.size());
+				}while(posicionTeletransportado == getPosicionHeroe());
+			}
+			else if(!listaDePosicionesAzul.isEmpty()) {
+				do{
+					posicionTeletransportado = listaDePosicionesTotal.get((int) Math.random()*listaDePosicionesTotal.size());
+				}while(posicionTeletransportado == getPosicionHeroe());
+			}
+			else{
+				actualizar = false;
+			}
+		}
+		else{
+			if(listaDePosicionesAzul.size()>1){
+				do{
+					posicionTeletransportado = listaDePosicionesAzul.get((int) Math.random()*listaDePosicionesRojo.size());
+				}while(posicionTeletransportado == getPosicionHeroe());
+			}
+			else if(!listaDePosicionesAzul.isEmpty()){
+				do{
+					posicionTeletransportado = listaDePosicionesTotal.get((int) Math.random()*listaDePosicionesTotal.size());
+				}while(posicionTeletransportado == getPosicionHeroe());
+			}
+			else{
+				actualizar = false;
+			}
+		}
+		if(actualizar){
+			eliminarElemento(posicionHeroe);
+			ponerElemento(posicionTeletransportado, heroe);
+			posicionesAActualizar.anhadirPosicion(posicionHeroe);
+			posicionesAActualizar.anhadirPosicion(posicionTeletransportado);
+		}
 	}
 	
 	public void eliminarElemento(Posicion posicion){

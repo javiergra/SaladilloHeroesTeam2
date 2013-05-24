@@ -13,7 +13,7 @@ public class AccionReiniciarNivel implements Accion {
 	
 	@Override
 	public Object ejecutar() {
-		return mapa;
+		return new AccionCargarMapa(mapa).ejecutar();
 	}
 
 }
