@@ -38,7 +38,7 @@ public class SaladilloFacade implements SaladilloFacadeDelegate {
 
 	@Override
 	public MapaInterface mover(Direccion direccion) {
-		return (MapaInterface) new AccionMover(mapa).ejecutar();
+		return (MapaInterface) new AccionMover(mapa, direccion).ejecutar();
 	}
 
 	@Override
