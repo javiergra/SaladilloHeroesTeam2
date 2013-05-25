@@ -12,6 +12,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import es.iessaladillo.juegos.saladillo.model.SaladilloFacade;
+import es.iessaladillo.juegos.saladillo.model.components.Fijo;
+import es.iessaladillo.juegos.saladillo.model.components.Mapa;
 
 
 
