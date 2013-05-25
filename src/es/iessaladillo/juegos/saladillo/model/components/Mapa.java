@@ -40,95 +40,79 @@ public class Mapa implements MapaInterface, Cloneable {
 	@Override
 	public void ponerElemento(Posicion posicion, Dibujable dibujable) {
 		
+		int movimiento;
+		Fijo elementoMovible;
+		Posicion posicionDibujable = new Posicion(posicion.getX(), posicion.getY());
+		Posicion posicionHeroeOriginal = (Posicion) posicionHeroe.clone();
+		Dibujable elementoEnMapa = dibujables[posicion.getX()][posicion.getY()];
+		
 		if(dibujable instanceof Heroe){
 			
-			if(dibujables[posicion.getX()][posicion.getY()] instanceof Diamante){
+			if(elementoEnMapa instanceof Diamante){
 				eliminarElemento(posicion);
+				eliminarElemento(posicionHeroe);
 				setPosicionHeroe(new Posicion(posicion.getX(), posicion.getY()));
-				dibujable.setFondo(dibujables[posicion.getX()][posicion.getY()]);
-				dibujables[posicion.getX()][posicion.getY()] = dibujable;
+				colocarElemento(posicion, dibujable);
 				numDiamantes--;
 			}
-			else if(dibujables[posicion.getX()][posicion.getY()] instanceof Fondo){
-				dibujable.setFondo(dibujables[posicion.getX()][posicion.getY()]);
-				dibujables[posicion.getX()][posicion.getY()] = dibujable;
+			else if(elementoEnMapa instanceof Fondo){
+				colocarElemento(posicion, dibujable);
+				eliminarElemento(posicionHeroe);
 				setPosicionHeroe(new Posicion(posicion.getX(), posicion.getY()));
 			}
-			else if(dibujables[posicion.getX()][posicion.getY()] instanceof Teletransporte){
+			else if(elementoEnMapa instanceof Teletransporte){
+				colocarElemento(posicion, dibujable);
+				eliminarElemento(posicionHeroe);
 				setPosicionHeroe(new Posicion(posicion.getX(), posicion.getY()));
 				teletransportar();
 			}
-			
+			else{
+				if(((Fijo) elementoEnMapa).getTipo().isMovible()){
+					elementoMovible = (Fijo) dibujables[posicion.getX()][posicion.getY()];
+					colocarElemento(posicion, dibujable);
+					eliminarElemento(posicionHeroe);
+					movimiento = posicion.getX() - getPosicionHeroe().getX();
+					setPosicionHeroe(new Posicion(posicion.getX(), posicion.getY()));
+					if(movimiento == 1){
+						if(sePuedeMover(new Posicion(posicion.getX() + 1, posicion.getY()))){
+							eliminarElemento(new Posicion(posicion.getX() + 1, posicion.getY()));
+							ponerElemento(new Posicion(posicion.getX() + 1, posicion.getY()), elementoMovible);
+						}
+					}
+					else if(movimiento == -1){
+						if(sePuedeMover(new Posicion(posicion.getX() - 1, posicion.getY()))){
+							eliminarElemento(new Posicion(posicion.getX(), posicion.getY()));
+							ponerElemento(new Posicion(posicion.getX() - 1, posicion.getY()), elementoMovible);
+						}
+					}
+					else{
+						elementoMovible = (Fijo) dibujables[posicion.getX()][posicion.getY()];
+						colocarElemento(posicion, dibujable);
+						movimiento = posicion.getY() - getPosicionHeroe().getY();
+						if(movimiento == 1){
+							if(sePuedeMover(new Posicion(posicion.getX(), posicion.getY() + 1))){
+								eliminarElemento(new Posicion(posicion.getX(), posicion.getY()));
+								ponerElemento(new Posicion(posicion.getX(), posicion.getY() + 1), elementoMovible);
+							}
+						}
+						else if(movimiento == -1){
+							if(sePuedeMover(new Posicion(posicion.getX(), posicion.getY() - 1)))
+								eliminarElemento(new Posicion(posicion.getX(), posicion.getY()));
+								ponerElemento(new Posicion(posicion.getX(), posicion.getY() - 1), elementoMovible);
+							}
+						}
+					}
+				}
+				
+			}
+		else
+			colocarElemento(posicion, dibujable);
+			posicionesAActualizar.anhadirPosicion(posicionHeroeOriginal);
+			posicionesAActualizar.anhadirPosicion(posicionHeroe);
+			posicionesAActualizar.anhadirPosicion(posicionDibujable);
+		
 		}
 		
-		
-		/*
-		int x=posicion.getX();
-		int y=posicion.getY();
-		
-		Dibujable d = dibujables[x][y];
-		
-		if(d == null)
-			dibujables[x][y] = dibujable;
-		else{
-			if(dibujable instanceof Heroe){
-				if(d.contieneFondo() && d instanceof Teletransporte){
-					dibujable.setFondo(d);
-					dibujables[x][y] = dibujable;
-					posicionHeroe = new Posicion(x,y);
-				} else{
-					if(!d.contieneFondo()){
-						dibujable.setFondo(d);
-						dibujables[x][y] = dibujable;
-						posicionHeroe = new Posicion(x,y);
-					}
-				}
-					
-			}
-			
-			else if(dibujable instanceof Diamante){
-				if(!dibujables[x][y].contieneFondo()){
-					dibujable.setFondo(dibujables[x][y]);
-					dibujables[x][y]=dibujable;
-					numDiamantes++;
-				}
-			}
-			
-			else if(dibujable instanceof Teletransporte){
-				
-				switch(((Teletransporte) dibujable).getTipo().toString().toLowerCase()){
-				case "teletransporterojo":
-					if(!dibujables[x][y].contieneFondo()){
-						dibujable.setFondo(dibujables[x][y]);
-						dibujables[x][y]=dibujable;
-						posicionesTeletransporteRojo.anhadirPosicion(new Posicion(x,y));
-					}
-					break;
-				case "teletransporteazul":
-					if(!dibujables[x][y].contieneFondo()){
-						dibujable.setFondo(dibujables[x][y]);
-						dibujables[x][y]=dibujable;
-						posicionesTeletransporteAzul.anhadirPosicion(new Posicion(x,y));
-					}
-					break;
-				}
-			}
-			
-			else if (dibujable instanceof Fijo){
-				if(!dibujables[x][y].contieneFondo()){
-					dibujable.setFondo(dibujables[x][y]);
-					dibujables[x][y]=dibujable;
-				}
-			}
-			
-			else if (dibujable instanceof Fondo){
-				dibujables[x][y].setFondo(dibujable);
-			}
-				
-		}
-		
-		*/
-	}
 	
 	private void teletransportar(){
 		boolean actualizar = true; 
@@ -177,12 +161,23 @@ public class Mapa implements MapaInterface, Cloneable {
 		}
 		if(actualizar){
 			eliminarElemento(posicionHeroe);
-			ponerElemento(posicionTeletransportado, heroe);
+			colocarElemento(posicionTeletransportado, heroe);
 			posicionesAActualizar.anhadirPosicion(posicionHeroe);
 			posicionesAActualizar.anhadirPosicion(posicionTeletransportado);
 		}
 	}
 	
+	private void colocarElemento(Posicion p, Dibujable d) {
+		
+		if(d.contieneFondo()){
+			d.setFondo(dibujables[p.getX()][p.getY()]);
+			dibujables[p.getX()][p.getY()] = d;
+		}
+		else
+			dibujables[p.getX()][p.getY()] = d;
+		
+	}
+
 	public void eliminarElemento(Posicion posicion){
 		int x=posicion.getX();
 		int y=posicion.getY();
@@ -193,6 +188,13 @@ public class Mapa implements MapaInterface, Cloneable {
 			dibujables[x][y]=dibujables[x][y].getFondo();
 		}
 			
+	}
+	
+	public boolean sePuedeMover(Posicion p){
+		if(dibujables[p.getX()][p.getY()] instanceof Fijo)
+			return false;
+		else
+			return true;
 	}
 	
 	public void construirMapa(){

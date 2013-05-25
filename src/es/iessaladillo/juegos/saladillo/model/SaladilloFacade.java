@@ -6,6 +6,8 @@ import es.iessaladillo.juegos.saladillo.model.action.AccionDiamantesEnMapa;
 import es.iessaladillo.juegos.saladillo.model.action.AccionGetPosicionHeroe;
 import es.iessaladillo.juegos.saladillo.model.action.AccionMapaFromEntidades;
 import es.iessaladillo.juegos.saladillo.model.action.AccionMapaToAscii;
+import es.iessaladillo.juegos.saladillo.model.action.AccionMover;
+import es.iessaladillo.juegos.saladillo.model.action.AccionPosicionesAActualizar;
 import es.iessaladillo.juegos.saladillo.model.action.AccionReiniciarNivel;
 import es.iessaladillo.juegos.saladillo.model.components.Mapa;
 import es.iessaladillo.juegos.saladillo.model.delegate.SaladilloFacadeDelegate;
@@ -36,8 +38,7 @@ public class SaladilloFacade implements SaladilloFacadeDelegate {
 
 	@Override
 	public MapaInterface mover(Direccion direccion) {
-		// TODO Auto-generated method stub
-		return null;
+		return (MapaInterface) new AccionMover(mapa).ejecutar();
 	}
 
 	@Override
@@ -57,8 +58,7 @@ public class SaladilloFacade implements SaladilloFacadeDelegate {
 
 	@Override
 	public ConjuntoPosiciones posicionesAActualizar() {
-		// TODO Auto-generated method stub
-		return null;
+		return (ConjuntoPosiciones) new AccionPosicionesAActualizar(mapa).ejecutar();
 	}
 
 	public MapaInterface getMapa() {
