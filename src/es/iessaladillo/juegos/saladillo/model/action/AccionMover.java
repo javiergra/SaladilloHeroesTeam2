@@ -9,6 +9,7 @@ import es.iessaladillo.juegos.saladillo.model.components.Fijo;
 import es.iessaladillo.juegos.saladillo.model.components.Fondo;
 import es.iessaladillo.juegos.saladillo.model.components.Mapa;
 import es.iessaladillo.juegos.saladillo.model.components.Teletransporte;
+import es.iessaladillo.juegos.saladillo.util.ConjuntoPosiciones;
 import es.iessaladillo.juegos.saladillo.util.Direccion;
 import es.iessaladillo.juegos.saladillo.util.Posicion;
 
@@ -30,16 +31,14 @@ public class AccionMover implements Accion {
 
 	public void mover() {
 
+		ConjuntoPosiciones cPosiciones = new ConjuntoPosiciones();
 		Dibujable heroe = mapa.obtenerPosicion(mapa.getPosicionHeroe());
 		Posicion posicionMover, posicionPelota, posicionTeletransporte;
 		Dibujable d;
 
 		posicionMover = posicionAMoverse(mapa.getPosicionHeroe());
 
-		if (posicionMover.getX() >= 0
-				&& posicionMover.getX() < mapa.getDibujables().length
-				&& posicionMover.getY() >= 0
-				&& posicionMover.getY() < mapa.getDibujables().length) {
+		if (posicionValida(posicionMover)) {
 
 			d = mapa.obtenerPosicion(posicionMover);
 
@@ -50,7 +49,9 @@ public class AccionMover implements Accion {
 				//}
 				
 				mapa.ponerElemento(posicionMover, heroe);
+				cPosiciones.anhadirPosicion(posicionMover);
 				mapa.eliminarElemento(mapa.getPosicionHeroe());
+				cPosiciones.anhadirPosicion(mapa.getPosicionHeroe());
 				mapa.setPosicionHeroe(posicionMover);
 				
 				if(heroe.getFondo() instanceof Teletransporte) heroe.setFondo(heroe.getFondo().getFondo());
@@ -61,7 +62,9 @@ public class AccionMover implements Accion {
 				mapa.eliminarElemento(posicionMover);
 				mapa.setNumDiamantes(mapa.getNumDiamantes() - 1);
 				mapa.ponerElemento(posicionMover, heroe);
+				cPosiciones.anhadirPosicion(posicionMover);
 				mapa.eliminarElemento(mapa.getPosicionHeroe());
+				cPosiciones.anhadirPosicion(mapa.getPosicionHeroe());
 				mapa.setPosicionHeroe(posicionMover);
 				
 				if(heroe.getFondo() instanceof Teletransporte) heroe.setFondo(heroe.getFondo().getFondo());
@@ -72,16 +75,16 @@ public class AccionMover implements Accion {
 					
 					posicionPelota = posicionAMoverse(posicionMover);
 
-					if(posicionPelota.getX() >= 0
-							&& posicionPelota.getX() < mapa.getDibujables().length
-							&& posicionPelota.getY() >= 0
-							&& posicionPelota.getY() < mapa.getDibujables().length
+					if(posicionValida(posicionPelota)
 							&& mapa.obtenerPosicion(posicionPelota) instanceof Fondo){
 						
 						mapa.ponerElemento(posicionPelota, d);
+						cPosiciones.anhadirPosicion(posicionPelota);
 						mapa.eliminarElemento(posicionMover);
+						cPosiciones.anhadirPosicion(posicionMover);
 						mapa.ponerElemento(posicionMover, heroe);
 						mapa.eliminarElemento(mapa.getPosicionHeroe());
+						cPosiciones.anhadirPosicion(mapa.getPosicionHeroe());
 						mapa.setPosicionHeroe(posicionMover);
 						
 						
@@ -95,8 +98,10 @@ public class AccionMover implements Accion {
 				
 				posicionTeletransporte = teletransportar(((Teletransporte) d).getTipo().name(), posicionMover);
 				mapa.ponerElemento(posicionTeletransporte, heroe);
+				cPosiciones.anhadirPosicion(posicionTeletransporte);
 				mapa.eliminarElemento(mapa.getPosicionHeroe());
 				mapa.eliminarElemento(mapa.getPosicionHeroe());
+				cPosiciones.anhadirPosicion(mapa.getPosicionHeroe());
 				mapa.setPosicionHeroe(posicionTeletransporte);
 				
 				}
@@ -159,5 +164,12 @@ public class AccionMover implements Accion {
 		
 		return posicionAMoverse;
 		
+	}
+	
+	private boolean posicionValida(Posicion p) {
+		return p.getX() >= 0
+				&& p.getX() < mapa.getDibujables().length
+				&& p.getY() >= 0
+				&& p.getY() < mapa.getDibujables().length;
 	}
 }
