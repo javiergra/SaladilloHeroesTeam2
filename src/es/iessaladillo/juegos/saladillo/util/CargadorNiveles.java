@@ -1,6 +1,9 @@
 package es.iessaladillo.juegos.saladillo.util;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -11,9 +14,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import es.iessaladillo.juegos.saladillo.controller.MapaInterface;
 import es.iessaladillo.juegos.saladillo.model.SaladilloFacade;
-import es.iessaladillo.juegos.saladillo.model.components.Fijo;
-import es.iessaladillo.juegos.saladillo.model.components.Mapa;
 
 
 
@@ -68,18 +70,48 @@ public class CargadorNiveles {
 
 	}
 	
-	static public void main(String args[]){
+	static public void main(String args[]) throws IOException{
 		
 		ArrayList<Entidad> entidades = cargarNivel("src/1.lvl");
 		//System.out.println(entidades);
 		SaladilloFacade f = new SaladilloFacade();
 		f.cargarMapa(entidades.toArray(new Entidad[entidades.size()]));
 		
-		System.out.println(
-				f.mapaToAscii(
-						f.mapaFromEntidades(
-								entidades.toArray(
-										new Entidad[entidades.size()]))));
+		MapaInterface mapa = f.getMapa();
+		
+		String s;
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		
+		while(true) {
+			System.out.println(f.mapaToAscii(mapa));
+			System.out.print("Mov: ");
+			s = br.readLine();
+			
+			
+			switch(s.charAt(0)) {
+			case 'W':
+			case 'w':
+				mapa = f.mover(Direccion.UP);
+				break;
+				
+			case 'A':
+			case 'a':
+				mapa = f.mover(Direccion.LEFT);
+				break;
+				
+			case 'S':	
+			case 's':
+				mapa = f.mover(Direccion.DOWN);
+				break;
+				
+			case 'D':
+			case 'd':
+				mapa = f.mover(Direccion.RIGHT);
+				break;
+				
+			}
+		}
 		
 	}
 	
