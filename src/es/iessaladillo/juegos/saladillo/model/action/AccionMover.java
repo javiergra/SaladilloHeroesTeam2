@@ -53,6 +53,8 @@ public class AccionMover implements Accion {
 				mapa.eliminarElemento(mapa.getPosicionHeroe());
 				mapa.setPosicionHeroe(posicionMover);
 				
+				if(heroe.getFondo() instanceof Teletransporte) heroe.setFondo(heroe.getFondo().getFondo());
+				
 			}
 
 			else if (d instanceof Diamante) {
@@ -61,6 +63,8 @@ public class AccionMover implements Accion {
 				mapa.ponerElemento(posicionMover, heroe);
 				mapa.eliminarElemento(mapa.getPosicionHeroe());
 				mapa.setPosicionHeroe(posicionMover);
+				
+				if(heroe.getFondo() instanceof Teletransporte) heroe.setFondo(heroe.getFondo().getFondo());
 			}
 
 			else if (d instanceof Fijo) {
@@ -80,6 +84,8 @@ public class AccionMover implements Accion {
 						mapa.eliminarElemento(mapa.getPosicionHeroe());
 						mapa.setPosicionHeroe(posicionMover);
 						
+						
+						if(heroe.getFondo() instanceof Teletransporte) heroe.setFondo(heroe.getFondo().getFondo());
 					}
 		
 				}
@@ -89,6 +95,7 @@ public class AccionMover implements Accion {
 				
 				posicionTeletransporte = teletransportar(((Teletransporte) d).getTipo().name(), posicionMover);
 				mapa.ponerElemento(posicionTeletransporte, heroe);
+				mapa.eliminarElemento(mapa.getPosicionHeroe());
 				mapa.eliminarElemento(mapa.getPosicionHeroe());
 				mapa.setPosicionHeroe(posicionTeletransporte);
 				
