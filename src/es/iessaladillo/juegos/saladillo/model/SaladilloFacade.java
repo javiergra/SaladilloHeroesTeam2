@@ -1,14 +1,7 @@
 package es.iessaladillo.juegos.saladillo.model;
 
 import es.iessaladillo.juegos.saladillo.controller.MapaInterface;
-import es.iessaladillo.juegos.saladillo.model.action.AccionCargarMapa;
-import es.iessaladillo.juegos.saladillo.model.action.AccionDiamantesEnMapa;
-import es.iessaladillo.juegos.saladillo.model.action.AccionGetPosicionHeroe;
-import es.iessaladillo.juegos.saladillo.model.action.AccionMapaFromEntidades;
-import es.iessaladillo.juegos.saladillo.model.action.AccionMapaToAscii;
-import es.iessaladillo.juegos.saladillo.model.action.AccionMover;
-import es.iessaladillo.juegos.saladillo.model.action.AccionPosicionesAActualizar;
-import es.iessaladillo.juegos.saladillo.model.action.AccionReiniciarNivel;
+import es.iessaladillo.juegos.saladillo.model.action.*;
 import es.iessaladillo.juegos.saladillo.model.components.Mapa;
 import es.iessaladillo.juegos.saladillo.model.delegate.SaladilloFacadeDelegate;
 import es.iessaladillo.juegos.saladillo.util.ConjuntoPosiciones;
@@ -23,42 +16,53 @@ public class SaladilloFacade implements SaladilloFacadeDelegate {
 	
 	@Override
 	public MapaInterface mapaFromEntidades(Entidad[] entidades) {
-		return (MapaInterface) new AccionMapaFromEntidades(entidades).ejecutar();
+		return (MapaInterface) new AccionMapaFromEntidades(entidades)
+			.ejecutar();
 	}
 
 	@Override
 	public void cargarMapa(Entidad[] entidades) {
-		this.mapa = (Mapa) new AccionCargarMapa( (MapaInterface) new AccionMapaFromEntidades(entidades).ejecutar() ).ejecutar();
+		this.mapa = (Mapa) new AccionCargarMapa( 
+			(MapaInterface) new AccionMapaFromEntidades(entidades)
+				.ejecutar())
+			.ejecutar();
 	}
 
 	@Override
 	public void cargarMapa(MapaInterface mapa) {
-		this.mapa = ((Mapa) new AccionCargarMapa(mapa).ejecutar());
+		this.mapa = ((Mapa) new AccionCargarMapa(mapa)
+		.ejecutar());
 	}
 
 	@Override
 	public MapaInterface mover(Direccion direccion) {
-		return (MapaInterface) new AccionMover(mapa, direccion).ejecutar();
+		return (MapaInterface) new AccionMover(mapa, direccion)
+			.ejecutar();
 	}
 
 	@Override
 	public MapaInterface reiniciarNivel() {
-		return (Mapa) new AccionReiniciarNivel(mapaOriginal).ejecutar();
+		return (Mapa) new AccionReiniciarNivel(mapaOriginal)
+			.ejecutar();
 	}
 
 	@Override
 	public Posicion getPosicionHeroe() {
-		return (Posicion) new AccionGetPosicionHeroe(mapa.getPosicionHeroe()).ejecutar();
+		return (Posicion) new AccionGetPosicionHeroe(
+				mapa.getPosicionHeroe())
+			.ejecutar();
 	}
 
 	@Override
 	public int diamantesEnMapa() {
-		return (int) new AccionDiamantesEnMapa(mapa).ejecutar();
+		return (int) new AccionDiamantesEnMapa(mapa)
+			.ejecutar();
 	}
 
 	@Override
 	public ConjuntoPosiciones posicionesAActualizar() {
-		return (ConjuntoPosiciones) new AccionPosicionesAActualizar(mapa).ejecutar();
+		return (ConjuntoPosiciones) new AccionPosicionesAActualizar(mapa)
+			.ejecutar();
 	}
 
 	public MapaInterface getMapa() {
@@ -71,7 +75,8 @@ public class SaladilloFacade implements SaladilloFacadeDelegate {
 
 	@Override
 	public String mapaToAscii(MapaInterface mapa) {
-		return (String) new AccionMapaToAscii(mapa).ejecutar();
+		return (String) new AccionMapaToAscii(mapa)
+			.ejecutar();
 	}
 
 }

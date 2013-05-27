@@ -18,6 +18,9 @@ public class Fijo extends Elemento {
 		this.fondo=fondo;
 	}
 
+	public boolean isMovible() {
+		return tipo.isMovible();
+	}
 
 	public TipoFijo getTipo() {
 		return tipo;
@@ -37,3 +40,4 @@ public class Fijo extends Elemento {
 		
 	}
 }
+

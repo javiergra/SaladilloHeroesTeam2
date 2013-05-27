@@ -16,6 +16,7 @@ import org.w3c.dom.NodeList;
 
 import es.iessaladillo.juegos.saladillo.controller.MapaInterface;
 import es.iessaladillo.juegos.saladillo.model.SaladilloFacade;
+import es.iessaladillo.juegos.saladillo.model.components.Mapa;
 
 
 
@@ -84,30 +85,30 @@ public class CargadorNiveles {
 		
 		
 		while(true) {
-			System.out.println(f.mapaToAscii(mapa));
-			System.out.print("Mov: ");
+			System.out.println(f.mapaToAscii(f.getMapa()));
+			System.out.print(mapa.getPosicionHeroe() + " Mov: ");
 			s = br.readLine();
 			
 			
 			switch(s.charAt(0)) {
 			case 'W':
 			case 'w':
-				mapa = f.mover(Direccion.UP);
+				f.setMapa((Mapa) f.mover(Direccion.UP));
 				break;
 				
 			case 'A':
 			case 'a':
-				mapa = f.mover(Direccion.LEFT);
+				f.setMapa((Mapa) f.mover(Direccion.LEFT));
 				break;
 				
 			case 'S':	
 			case 's':
-				mapa = f.mover(Direccion.DOWN);
+				f.setMapa((Mapa) f.mover(Direccion.DOWN));
 				break;
 				
 			case 'D':
 			case 'd':
-				mapa = f.mover(Direccion.RIGHT);
+				f.setMapa((Mapa) f.mover(Direccion.RIGHT));
 				break;
 				
 			}
