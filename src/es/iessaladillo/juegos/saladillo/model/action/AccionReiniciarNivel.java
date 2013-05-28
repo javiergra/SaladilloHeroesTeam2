@@ -7,13 +7,13 @@ public class AccionReiniciarNivel implements Accion {
 
 	private MapaInterface mapa;
 	
-	public AccionReiniciarNivel(MapaInterface mapaOriginal) {
-		this.mapa = (MapaInterface) ((Mapa) mapaOriginal).clone();
+	public AccionReiniciarNivel(MapaInterface mapaNuevo) {
+		this.mapa = (MapaInterface) ((Mapa)mapaNuevo).clone();
 	}
 	
 	@Override
 	public Object ejecutar() {
-		return new AccionCargarMapa(mapa).ejecutar();
+		return mapa;
 	}
 
 }
