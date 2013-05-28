@@ -32,6 +32,7 @@ public class AccionMover implements Accion {
 	public void mover() {
 
 		ConjuntoPosiciones cPosiciones = new ConjuntoPosiciones();
+		mapa.setPosicionesAActualizar(cPosiciones); // Cada vez que se mueve hay que borrar las posiciones actualizadas anteriormente.
 		Dibujable heroe = mapa.obtenerPosicion(mapa.getPosicionHeroe());
 		Posicion posicionMover, posicionPelota, posicionTeletransporte;
 		Dibujable d;
@@ -43,10 +44,6 @@ public class AccionMover implements Accion {
 			d = mapa.obtenerPosicion(posicionMover);
 
 			if (d instanceof Fondo) {
-				
-				//if(heroe.getFondo() instanceof Teletransporte){
-					//heroe.setFondo(heroe.getFondo().getFondo());
-				//}
 				
 				mapa.ponerElemento(posicionMover, heroe);
 				cPosiciones.anhadirPosicion(posicionMover);
@@ -105,6 +102,8 @@ public class AccionMover implements Accion {
 				mapa.setPosicionHeroe(posicionTeletransporte);
 				
 				}
+			
+			mapa.setPosicionesAActualizar(cPosiciones);// al final del movimiento hay que guardar las posiciones que hay que actualizar.
 				
 			}
 				
