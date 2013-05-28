@@ -9,7 +9,7 @@ public enum TipoFondo {
 	CaminoArenaCombinadoD,
 	CaminoArenaCombinadoL,
 	CaminoArenaCombinadoR,
-	CombinadoU,
+	CaminoArenaCombinadoU,
 	CaminoArenaCurvaLD,
 	CaminoArenaCurvaLU,
 	CaminoArenaCurvaRU, 
@@ -51,7 +51,7 @@ public enum TipoFondo {
 		case "CaminoArenaCombinadoD": return CaminoArenaCombinadoD;
 		case "CaminoArenaCombinadoL": return CaminoArenaCombinadoL;
 		case "CaminoArenaCombinadoR": return CaminoArenaCombinadoR;
-		case "CombinadoU": return CombinadoU;
+		case "CaminoArenaCombinadoU": return CaminoArenaCombinadoU;
 		case "CaminoArenaCurvaLD": return CaminoArenaCurvaLD;
 		case "CaminoArenaCurvaLU": return CaminoArenaCurvaLU;
 		case "CaminoArenaCurvaRU": return CaminoArenaCurvaRU;
