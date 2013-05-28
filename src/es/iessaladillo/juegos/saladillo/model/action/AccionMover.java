@@ -29,7 +29,7 @@ public class AccionMover implements Accion {
 		return mapa;
 	}
 
-	public void mover() {
+	private void mover() {
 
 		ConjuntoPosiciones cPosiciones = new ConjuntoPosiciones();
 		mapa.setPosicionesAActualizar(cPosiciones); // Cada vez que se mueve hay que borrar las posiciones actualizadas anteriormente.

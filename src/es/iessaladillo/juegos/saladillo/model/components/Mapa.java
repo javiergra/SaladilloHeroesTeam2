@@ -58,7 +58,7 @@ public class Mapa implements MapaInterface, Cloneable {
 		}
 	}
 
-	public void construirMapa() {
+	private void construirMapa() {
 		for (int i, j = 0; j < dibujables.length; j++) {
 			for (i = 0; i < dibujables[j].length; i++) {
 				if (dibujables[j][i] instanceof Diamante) {
