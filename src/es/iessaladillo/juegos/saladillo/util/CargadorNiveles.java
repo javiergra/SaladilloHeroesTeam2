@@ -71,7 +71,7 @@ public class CargadorNiveles {
 
 	}
 	
-	static public void main(String args[]) throws IOException{
+	static public void main(String args[]) throws IOException{//prueba
 		
 		ArrayList<Entidad> entidades = cargarNivel("src/1.lvl");
 		//System.out.println(entidades);
