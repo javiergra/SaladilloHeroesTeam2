@@ -2,6 +2,7 @@ package es.iessaladillo.juegos.saladillo.model.action;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 import es.iessaladillo.juegos.saladillo.controller.Dibujable;
 import es.iessaladillo.juegos.saladillo.model.components.Diamante;
@@ -130,14 +131,16 @@ public class AccionMover implements Accion {
 			listaPosiciones.add(it.next());
 		}
 		
-		if(listaPosiciones.size() <= 1)
+		if(listaPosiciones.size() <= 1) {
 			return posicionTeletransporte;
-		else{
+		} else {
+			Random r = new Random();
 			
 			while(true) {
-				pT = listaPosiciones.get((int)Math.random() * listaPosiciones.size());
+				pT = listaPosiciones.get(r.nextInt(listaPosiciones.size()));
 				
 				if(!posicionTeletransporte.equals(pT)) return pT;
+				
 			}
 		
 		}
