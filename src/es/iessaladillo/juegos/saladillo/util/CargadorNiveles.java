@@ -86,7 +86,7 @@ public class CargadorNiveles {
 		
 		while(true) {
 			System.out.println(f.mapaToAscii(f.getMapa()));
-			System.out.print(mapa.getPosicionHeroe() + " Mov: ");
+			System.out.print(f.getPosicionHeroe() + " Mov: ");
 			s = br.readLine();
 			
 			
@@ -111,6 +111,9 @@ public class CargadorNiveles {
 				f.setMapa((Mapa) f.mover(Direccion.RIGHT));
 				break;
 				
+			case 'R':
+			case 'r':
+				f.setMapa((Mapa) f.reiniciarNivel());
 			}
 		}
 		

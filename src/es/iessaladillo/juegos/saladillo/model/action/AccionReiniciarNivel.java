@@ -5,10 +5,10 @@ import es.iessaladillo.juegos.saladillo.model.components.Mapa;
 
 public class AccionReiniciarNivel implements Accion {
 
-	private MapaInterface mapa;
+	private Mapa mapa;
 	
 	public AccionReiniciarNivel(MapaInterface mapaNuevo) {
-		this.mapa = (MapaInterface) ((Mapa)mapaNuevo).clone();
+		this.mapa = (Mapa) ((Mapa)mapaNuevo).clone();
 	}
 	
 	@Override

@@ -9,6 +9,6 @@ public class Diamante extends Elemento {
 	}
 	
 	public Object clone() {
-		return new Diamante(fondo);
+		return new Diamante((Dibujable) fondo.clone());
 	}
 }

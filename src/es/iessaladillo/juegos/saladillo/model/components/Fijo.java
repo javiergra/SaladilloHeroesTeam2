@@ -36,7 +36,7 @@ public class Fijo extends Elemento {
 	}
 	
 	public Object clone() {
-		return new Fijo(tipo, fondo);
+		return new Fijo(tipo, (Dibujable) fondo.clone());
 		
 	}
 }
