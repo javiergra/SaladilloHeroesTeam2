@@ -4,6 +4,8 @@
 package es.iessaladillo.juegos.saladillo.model.components;
 
 import es.iessaladillo.juegos.saladillo.controller.Dibujable;
+import static es.iessaladillo.juegos.saladillo.interfaz.util.GlobalValues.XMAX;
+import static es.iessaladillo.juegos.saladillo.interfaz.util.GlobalValues.YMAX;
 import es.iessaladillo.juegos.saladillo.controller.MapaInterface;
 import es.iessaladillo.juegos.saladillo.util.ConjuntoPosiciones;
 import es.iessaladillo.juegos.saladillo.util.Posicion;
@@ -85,7 +87,15 @@ public class Mapa implements MapaInterface, Cloneable {
 	public Object clone() {
 		Mapa mapa = new Mapa();
 		
-		mapa.setDibujables(dibujables.clone());
+		Dibujable[][] dibujables = new Dibujable[YMAX][XMAX];
+		
+		for(int i, j = 0; j < this.dibujables.length; j++) {
+			for (i = 0; i < this.dibujables[j].length; i++) {
+				dibujables[j][i] = (Dibujable) this.dibujables[j][i].clone();
+			}
+		}
+		
+		mapa.setDibujables(dibujables);
 		
 		mapa.setNumDiamantes(numDiamantes);
 		

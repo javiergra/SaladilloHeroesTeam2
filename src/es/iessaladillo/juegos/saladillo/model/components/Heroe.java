@@ -9,6 +9,6 @@ public class Heroe extends Elemento {
 	}
 
 	public Object clone() {
-		return new Heroe(fondo);
+		return new Heroe((Dibujable) fondo.clone());
 	}
 }

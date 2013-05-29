@@ -33,7 +33,7 @@ public class Elemento implements Dibujable {
 	}
 
 	public Object clone() {
-		return new Elemento(fondo);
+		return new Elemento((Dibujable) fondo.clone());
 	}
 
 	public Elemento(Dibujable fondo) {

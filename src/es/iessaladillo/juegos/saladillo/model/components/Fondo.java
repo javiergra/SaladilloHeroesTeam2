@@ -20,7 +20,7 @@ public class Fondo extends Elemento {
 	}
 	
 	public Object clone(){
-		return new Fondo(tipo, fondo);
+		return new Fondo(tipo, null);
 	}
 
 	public TipoFondo getTipo() {

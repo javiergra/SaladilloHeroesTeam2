@@ -22,7 +22,8 @@ public class SaladilloFacade implements SaladilloFacadeDelegate {
 
 	@Override
 	public void cargarMapa(Entidad[] entidades) {
-		cargarMapa((MapaInterface) new AccionMapaFromEntidades(entidades).ejecutar());
+		cargarMapa((MapaInterface) new AccionMapaFromEntidades(entidades)
+		.ejecutar());
 	}
 
 	@Override
@@ -40,8 +41,8 @@ public class SaladilloFacade implements SaladilloFacadeDelegate {
 	}
 
 	@Override
-	public MapaInterface reiniciarNivel() {
-		return (Mapa) new AccionReiniciarNivel(mapa)
+	public MapaInterface reiniciarNivel() {	
+		return (Mapa) new AccionReiniciarNivel(mapaOriginal)
 			.ejecutar();
 	}
 
