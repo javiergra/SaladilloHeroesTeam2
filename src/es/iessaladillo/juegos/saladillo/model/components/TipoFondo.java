@@ -46,48 +46,48 @@ public enum TipoFondo {
 	CaminoArenaGravillaRU;
 	
 	public static TipoFondo getTipo(String s) {
-		switch(s) {
-		case "CaminoArena": return CaminoArena;
-		case "CaminoArenaCombinadoD": return CaminoArenaCombinadoD;
-		case "CaminoArenaCombinadoL": return CaminoArenaCombinadoL;
-		case "CaminoArenaCombinadoR": return CaminoArenaCombinadoR;
-		case "CaminoArenaCombinadoU": return CaminoArenaCombinadoU;
-		case "CaminoArenaCurvaLD": return CaminoArenaCurvaLD;
-		case "CaminoArenaCurvaLU": return CaminoArenaCurvaLU;
-		case "CaminoArenaCurvaRU": return CaminoArenaCurvaRU;
-		case "CaminoArenaCurvaRD": return CaminoArenaCurvaRD;
-		case "CaminoArenaHorizontal": return CaminoArenaHorizontal;
-		case "CaminoArenaVertical": return CaminoArenaVertical;
-		case "Carretera": return Carretera;
-		case "Cesped": return Cesped;
-		case "CespedCombinadoD": return CespedCombinadoD;
-		case "CespedCombinadoL": return CespedCombinadoL;
-		case "CespedCombinadoR": return CespedCombinadoR;
-		case "CespedCombinadoU": return CespedCombinadoU;
-		case "CespedCurvaLD": return CespedCurvaLD;
-		case "CespedCurvaLU": return CespedCurvaLU;
-		case "CespedCurvaRD": return CespedCurvaRD;
-		case "CespedCurvaRU": return CespedCurvaRU;
-		case "CespedHorizontal": return CespedHorizontal;
-		case "CespedSendero": return CespedSendero;
-		case "CespedSenderoCurvaLD": return CespedSenderoCurvaLD;
-		case "CespedSenderoCurvaLU": return CespedSenderoCurvaLU;
-		case "CespedSenderoCurvaRD": return CespedSenderoCurvaRD;
-		case "CespedSenderoCurvaRU": return CespedSenderoCurvaRU;
-		case "CespedSenderoHorizontal": return CespedSenderoHorizontal;
-		case "CespedSenderoVertical": return CespedSenderoVertical;
-		case "CespedVertical": return CespedVertical;
-		case "CaminoArenaCespedCurvaLD": return CaminoArenaCespedCurvaLD;
-		case "CaminoArenaCespedCurvaLU": return CaminoArenaCespedCurvaLU;
-		case "CaminoArenaCespedCurvaRD": return CaminoArenaCespedCurvaRD;
-		case "CaminoArenaCespedCurvaRU": return CaminoArenaCespedCurvaRU;
-		case "CaminoArenaGravillaLD": return CaminoArenaGravillaLD;
-		case "CaminoArenaGravillaLU": return CaminoArenaGravillaLU;
-		case "CaminoArenaGravillaRD": return CaminoArenaGravillaRD;
-		case "CaminoArenaGravillaRU": return CaminoArenaGravillaRU;
-		case "CaminoArenaGravillaCurvaRU": return CaminoArenaGravillaCurvaRU;
-		}
+		TipoFondo t = null;
 		
-		return null;
+		if (s.equals("CaminoArena")) t = CaminoArena;
+		else if (s.equals("CaminoArenaCombinadoD")) t = CaminoArenaCombinadoD;
+		else if (s.equals("CaminoArenaCombinadoL")) t = CaminoArenaCombinadoL;
+		else if (s.equals("CaminoArenaCombinadoR")) t = CaminoArenaCombinadoR;
+		else if (s.equals("CaminoArenaCombinadoU")) t = CaminoArenaCombinadoU;
+		else if (s.equals("CaminoArenaCurvaLD")) t = CaminoArenaCurvaLD;
+		else if (s.equals("CaminoArenaCurvaLU")) t = CaminoArenaCurvaLU;
+		else if (s.equals("CaminoArenaCurvaRU")) t = CaminoArenaCurvaRU;
+		else if (s.equals("CaminoArenaCurvaRD")) t = CaminoArenaCurvaRD;
+		else if (s.equals("CaminoArenaHorizontal")) t = CaminoArenaHorizontal;
+		else if (s.equals("CaminoArenaVertical")) t = CaminoArenaVertical;
+		else if (s.equals("Carretera")) t = Carretera;
+		else if (s.equals("Cesped")) t = Cesped;
+		else if (s.equals("CespedCombinadoD")) t = CespedCombinadoD;
+		else if (s.equals("CespedCombinadoL")) t = CespedCombinadoL;
+		else if (s.equals("CespedCombinadoR")) t = CespedCombinadoR;
+		else if (s.equals("CespedCombinadoU")) t = CespedCombinadoU;
+		else if (s.equals("CespedCurvaLD")) t = CespedCurvaLD;
+		else if (s.equals("CespedCurvaLU")) t = CespedCurvaLU;
+		else if (s.equals("CespedCurvaRD")) t = CespedCurvaRD;
+		else if (s.equals("CespedCurvaRU")) t = CespedCurvaRU;
+		else if (s.equals("CespedHorizontal")) t = CespedHorizontal;
+		else if (s.equals("CespedSendero")) t = CespedSendero;
+		else if (s.equals("CespedSenderoCurvaLD")) t = CespedSenderoCurvaLD;
+		else if (s.equals("CespedSenderoCurvaLU")) t = CespedSenderoCurvaLU;
+		else if (s.equals("CespedSenderoCurvaRD")) t = CespedSenderoCurvaRD;
+		else if (s.equals("CespedSenderoCurvaRU")) t = CespedSenderoCurvaRU;
+		else if (s.equals("CespedSenderoHorizontal")) t = CespedSenderoHorizontal;
+		else if (s.equals("CespedSenderoVertical")) t = CespedSenderoVertical;
+		else if (s.equals("CespedVertical")) t = CespedVertical;
+		else if (s.equals("CaminoArenaCespedCurvaLD")) t = CaminoArenaCespedCurvaLD;
+		else if (s.equals("CaminoArenaCespedCurvaLU")) t = CaminoArenaCespedCurvaLU;
+		else if (s.equals("CaminoArenaCespedCurvaRD")) t = CaminoArenaCespedCurvaRD;
+		else if (s.equals("CaminoArenaCespedCurvaRU")) t = CaminoArenaCespedCurvaRU;
+		else if (s.equals("CaminoArenaGravillaLD")) t = CaminoArenaGravillaLD;
+		else if (s.equals("CaminoArenaGravillaLU")) t = CaminoArenaGravillaLU;
+		else if (s.equals("CaminoArenaGravillaRD")) t = CaminoArenaGravillaRD;
+		else if (s.equals("CaminoArenaGravillaRU")) t = CaminoArenaGravillaRU;
+		else if (s.equals("CaminoArenaGravillaCurvaRU")) t = CaminoArenaGravillaCurvaRU;
+		
+		return t;
 	}
 }

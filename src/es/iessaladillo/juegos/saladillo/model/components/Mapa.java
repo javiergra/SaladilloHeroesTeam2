@@ -99,13 +99,13 @@ public class Mapa implements MapaInterface, Cloneable {
 		
 		mapa.setNumDiamantes(numDiamantes);
 		
-		mapa.setPosicionesAActualizar((ConjuntoPosiciones) posicionesAActualizar.clone());
+		mapa.setPosicionesAActualizar(posicionesAActualizar);
 		
-		mapa.setPosicionesTeletransporteAzul((ConjuntoPosiciones) posicionesTeletransporteAzul.clone());
+		mapa.setPosicionesTeletransporteAzul(posicionesTeletransporteAzul);
 		
-		mapa.setPosicionesTeletransporteRojo((ConjuntoPosiciones) posicionesTeletransporteRojo.clone());
+		mapa.setPosicionesTeletransporteRojo(posicionesTeletransporteRojo);
 		
-		mapa.setPosicionHeroe((Posicion) posicionHeroe.clone());
+		mapa.setPosicionHeroe(posicionHeroe);
 
 		return mapa;
 
