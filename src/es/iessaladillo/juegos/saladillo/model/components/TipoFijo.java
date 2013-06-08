@@ -29,17 +29,14 @@ public enum TipoFijo {
 	}
 	
 	public static boolean isMovible(String tipo) {
-		switch(tipo) {
-		case "Caja":
-		case "PelotaAzul":
-		case "PelotaNaranja":
-		case "PelotaVerde":
-		case "PelotaRoja":
-			return true;
-			
-		default:
-			return false;
-		}
+		boolean movible;
+		
+		if(tipo.equals("Caja") || tipo.equals("PelotaAzul") || tipo.equals("PelotaNaranja") || tipo.equals("PelotaVerde") || tipo.equals("PelotaRoja"))
+			movible = true;
+		else
+			movible = false;
+		
+		return movible;
 	}
 	
 	/**
@@ -48,21 +45,21 @@ public enum TipoFijo {
 	 * @return Objeto enumerado o <code>null</code> en caso de que no sea Tipo Fijo.
 	 */
 	public static TipoFijo getTipo(String s) {
-		switch(s) {
-		case "Caja": return Caja;
-		case "PelotaAzul": return PelotaAzul;
-		case "PelotaRoja": return PelotaRoja;
-		case "PelotaVerde": return PelotaVerde;
-		case "PelotaNaranja": return PelotaNaranja;
-		case "BolaPiedra": return BolaPiedra;
-		case "Arbol": return Arbol;
-		case "Casa": return Casa;
-		case "Edificio": return Edificio;
-		case "Edificio2": return Edificio2;
-		case "Matorral": return Matorral;
-		case "RocaSuelo": return RocaSuelo;
-		}
+		TipoFijo t = null;
 		
-		return null;
+		if(s.equals("Caja")) t = Caja;
+		else if(s.equals("PelotaAzul")) t = PelotaAzul;
+		else if(s.equals("PelotaRoja")) t = PelotaRoja;
+		else if(s.equals("PelotaVerde")) t = PelotaVerde;
+		else if(s.equals("PelotaNaranja")) t = PelotaNaranja;
+		else if(s.equals("BolaPiedra")) t = BolaPiedra;
+		else if(s.equals("Arbol")) t = Arbol;
+		else if(s.equals("Casa")) t = Casa;
+		else if(s.equals("Edificio")) t = Edificio;
+		else if(s.equals("Edificio2")) t = Edificio2;
+		else if(s.equals("Matorral")) t = Matorral;
+		else if(s.equals("RocaSuelo")) t = RocaSuelo;
+		
+		return t;
 	}
 }

@@ -22,13 +22,5 @@ public class ConjuntoPosiciones {
     public boolean estaVacio(){
     	return posiciones.isEmpty();
     }
-    
-    public Object clone() {
-    	return new ConjuntoPosiciones() {{
-    		for (Posicion p : posiciones) {
-    			anhadirPosicion((Posicion) p.clone());
-    		}
-    	}};
-    }
 
 }
