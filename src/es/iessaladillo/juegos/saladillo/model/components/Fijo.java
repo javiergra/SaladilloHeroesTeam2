@@ -35,9 +35,22 @@ public class Fijo extends Elemento {
 		this.tipo = tipo;
 	}
 	
+	public Fijo(Dibujable fondo) {
+		super(fondo);
+	}
+
+
 	public Object clone() {
-		return new Fijo(tipo, (Dibujable) fondo.clone());
-		
+		Fijo f = new Fijo(null);
+		if(this.contieneFondo()){
+			f.setFondo((Dibujable) this.fondo.clone());
+			f.setTipo(this.tipo);
+		}
+		else
+			f.setTipo(this.tipo);
+		return f;		
 	}
 }
+
+
 
