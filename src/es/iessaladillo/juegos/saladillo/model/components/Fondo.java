@@ -14,6 +14,11 @@ public class Fondo extends Elemento {
 		return null;
 	}
 
+	@Override
+	public boolean contieneFondo() {
+		return false;
+	}
+	
 	public void setFondo(Dibujable fondo) {
 		this.fondo=fondo;
 
