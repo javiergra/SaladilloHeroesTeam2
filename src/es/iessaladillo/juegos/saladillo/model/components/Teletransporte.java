@@ -6,23 +6,35 @@ public class Teletransporte extends Elemento {
 
 	private TipoTeletransporte tipo;
 
-	
-	public Teletransporte(TipoTeletransporte tipo,Dibujable fondo) {
+	public Teletransporte(TipoTeletransporte tipo) {
+		this(tipo, null);
+	}
+
+	public Teletransporte(TipoTeletransporte tipo, Dibujable fondo) {
 		super(fondo);
 		this.tipo = tipo;
 	}
 
+	@Override
+	public Object clone() {
+		return new Teletransporte(tipo, (Dibujable) fondo.clone());
+	}
+
+	@Override
+	public String getNombreImagen() {
+		return tipo.name();
+	}
 
 	public TipoTeletransporte getTipo() {
 		return tipo;
 	}
 
-
 	public void setTipo(TipoTeletransporte tipo) {
 		this.tipo = tipo;
 	}
 
-	public Object clone() {
-		return new Teletransporte(tipo, (Dibujable) fondo.clone());
+	@Override
+	public String toString() {
+		return getClass().getSimpleName() + "(" + tipo + ")" + "@" + fondo;
 	}
 }

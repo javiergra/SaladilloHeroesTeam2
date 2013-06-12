@@ -150,19 +150,20 @@ public class AccionMover implements Accion {
 		
 		Posicion posicionAMoverse;
 		
-		if (direccion == Direccion.UP)
-			posicionAMoverse = new Posicion(p.getX(),
-					p.getY() - 1);
-		else if (direccion == Direccion.DOWN)
-			posicionAMoverse = new Posicion(p.getX(),
-					p.getY() + 1);
-		else if (direccion == Direccion.RIGHT)
-			posicionAMoverse = new Posicion(p.getX() + 1,
-					p.getY());
-		else
+		if (direccion == Direccion.UP) {
+			posicionAMoverse = new Posicion(p.getX(), p.getY() - 1);
+		
+		} else if (direccion == Direccion.DOWN) {
+			posicionAMoverse = new Posicion(p.getX(), p.getY() + 1);
+			
+		} else if (direccion == Direccion.RIGHT) {
+			posicionAMoverse = new Posicion(p.getX() + 1, p.getY());
+			
+		} else {
 			// se considera la dirección hacia la izquierda.
-			posicionAMoverse = new Posicion(p.getX() - 1,
-					p.getY());
+			posicionAMoverse = new Posicion(p.getX() - 1, p.getY());
+		
+		}
 		
 		return posicionAMoverse;
 		
