@@ -119,7 +119,7 @@ public class AccionMover implements Accion {
 		ArrayList <Posicion> listaPosiciones = new ArrayList<Posicion>();
 		Posicion pT;
 		
-		if(tipo.equals("Rojo")){
+		if(tipo.equals("TeletransporteRojo")){
 			it = mapa.getPosicionesTeletransporteRojo().obtenerPosiciones();
 			
 		} else {
