@@ -45,10 +45,11 @@ public class AccionMover implements Accion {
 			d = mapa.obtenerPosicion(posicionMover);
 
 			if (d instanceof Fondo) {
-				
+				Dibujable f = mapa.obtenerPosicion(mapa.getPosicionHeroe()).getFondo();
 				mapa.ponerElemento(posicionMover, heroe);
 				cPosiciones.anhadirPosicion(posicionMover);
 				mapa.eliminarElemento(mapa.getPosicionHeroe());
+				mapa.ponerElemento(mapa.getPosicionHeroe(), f);
 				cPosiciones.anhadirPosicion(mapa.getPosicionHeroe());
 				mapa.setPosicionHeroe(posicionMover);
 				
