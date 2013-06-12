@@ -1,10 +1,18 @@
 package es.iessaladillo.juegos.saladillo.model.action;
 
-import es.iessaladillo.juegos.saladillo.controller.Dibujable;
-import es.iessaladillo.juegos.saladillo.model.components.*;
-import es.iessaladillo.juegos.saladillo.util.Entidad;
 import static es.iessaladillo.juegos.saladillo.interfaz.util.GlobalValues.XMAX;
 import static es.iessaladillo.juegos.saladillo.interfaz.util.GlobalValues.YMAX;
+import es.iessaladillo.juegos.saladillo.controller.Dibujable;
+import es.iessaladillo.juegos.saladillo.model.components.Diamante;
+import es.iessaladillo.juegos.saladillo.model.components.Fijo;
+import es.iessaladillo.juegos.saladillo.model.components.Fondo;
+import es.iessaladillo.juegos.saladillo.model.components.Heroe;
+import es.iessaladillo.juegos.saladillo.model.components.Mapa;
+import es.iessaladillo.juegos.saladillo.model.components.Teletransporte;
+import es.iessaladillo.juegos.saladillo.model.components.TipoFijo;
+import es.iessaladillo.juegos.saladillo.model.components.TipoFondo;
+import es.iessaladillo.juegos.saladillo.model.components.TipoTeletransporte;
+import es.iessaladillo.juegos.saladillo.util.Entidad;
 
 public class AccionMapaFromEntidades implements Accion {
 	private Entidad[] entidades;
@@ -21,28 +29,29 @@ public class AccionMapaFromEntidades implements Accion {
 			String s = e.getTipo();
 			Dibujable c, d = null;
 			
-			if(s.equals("Heroe")) {
-				d = new Heroe(null);
+			if(s.equals("Heroe") ||
+					s.equals("Heroina")) {
+				d = new Heroe();
 				
 			} else if (s.equals("Diamante")) {
-				d = new Diamante(null);
+				d = new Diamante();
 				
 			} else if (s.matches("Teletransporte.*")) {
 				TipoTeletransporte tt = (TipoTeletransporte.isRojo(s) ?
 					TipoTeletransporte.TeletransporteRojo :
 					TipoTeletransporte.TeletransporteAzul);
 				
-				d = new Teletransporte(tt, null);
+				d = new Teletransporte(tt);
 				
 			} else {
-				TipoFijo tfijo;
-				TipoFondo tfondo;
+				TipoFijo tfijo = TipoFijo.getTipo(s);
 				
-				if ((tfijo = TipoFijo.getTipo(s)) != null) {
-					d = new Fijo(tfijo, null);
+				if (tfijo != null) {
+					d = new Fijo(tfijo);
 					
-				} else if ((tfondo = TipoFondo.getTipo(s)) != null) {
-					d = new Fondo(tfondo, null);
+				} else {
+					// No habrá problemas
+					d = new Fondo(TipoFondo.getTipo(s));
 					
 				}
 			}
@@ -51,9 +60,14 @@ public class AccionMapaFromEntidades implements Accion {
 			if((c = dibujables[e.getY()][e.getX()]) == null) {
 				dibujables[e.getY()][e.getX()] = d;
 				
+			} else if(d instanceof Fondo) {
+				c.setFondo(d);
+				dibujables[e.getY()][e.getX()] = c;
+				
 			} else {
 				d.setFondo(c);
 				dibujables[e.getY()][e.getX()] = d;
+				
 			}
 		}
 		

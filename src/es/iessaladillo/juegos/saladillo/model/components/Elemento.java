@@ -5,15 +5,23 @@ import es.iessaladillo.juegos.saladillo.controller.Dibujable;
 public class Elemento implements Dibujable {
 
 	protected Dibujable fondo;
-	
+
+	public Elemento() {
+		this.fondo = null;
+	}
+
+	public Elemento(Dibujable fondo) {
+		this.fondo = fondo;
+	}
+
 	@Override
-	public String getNombreImagen() {
-		return null;
+	public Object clone() {
+		return new Elemento((Dibujable) fondo.clone());
 	}
 
 	@Override
 	public boolean contieneFondo() {
-		return (fondo==null) ? false:true;
+		return (fondo != null) ? true : false;
 	}
 
 	@Override
@@ -22,23 +30,18 @@ public class Elemento implements Dibujable {
 	}
 
 	@Override
-	public void setFondo(Dibujable fondo) {
-		this.fondo = fondo;
-		
-	}
-
-	@Override
 	public String getNombreClase() {
 		return getClass().getSimpleName();
 	}
 
-	public Object clone() {
-		return new Elemento((Dibujable) fondo.clone());
+	@Override
+	public String getNombreImagen() {
+		return getClass().getSimpleName();
 	}
 
-	public Elemento(Dibujable fondo) {
+	@Override
+	public void setFondo(Dibujable fondo) {
 		this.fondo = fondo;
-	}
-		
 
+	}
 }

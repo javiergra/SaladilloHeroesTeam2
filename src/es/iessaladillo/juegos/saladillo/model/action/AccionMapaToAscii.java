@@ -37,7 +37,7 @@ public class AccionMapaToAscii implements Accion {
 					if (((Fijo) d).getTipo().isMovible()) s+=" O |";
 					else s+=" X |";
 				}
-				else s+=" · |";
+				else s+=" Â· |";
 				
 			}
 			s+="\n";
