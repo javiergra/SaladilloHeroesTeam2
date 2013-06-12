@@ -37,6 +37,7 @@ public class AccionMover implements Accion {
 		Dibujable heroe = mapa.obtenerPosicion(mapa.getPosicionHeroe());
 		Posicion posicionMover, posicionPelota, posicionTeletransporte;
 		Dibujable d;
+		Dibujable t;
 
 		posicionMover = posicionAMoverse(mapa.getPosicionHeroe());
 
@@ -45,15 +46,25 @@ public class AccionMover implements Accion {
 			d = mapa.obtenerPosicion(posicionMover);
 
 			if (d instanceof Fondo) {
-				Dibujable f = mapa.obtenerPosicion(mapa.getPosicionHeroe()).getFondo();
-				mapa.ponerElemento(posicionMover, heroe);
-				cPosiciones.anhadirPosicion(posicionMover);
-				mapa.eliminarElemento(mapa.getPosicionHeroe());
-				mapa.ponerElemento(mapa.getPosicionHeroe(), f);
-				cPosiciones.anhadirPosicion(mapa.getPosicionHeroe());
-				mapa.setPosicionHeroe(posicionMover);
-				
-				if(heroe.getFondo() instanceof Teletransporte) heroe.setFondo(heroe.getFondo().getFondo());
+				if(heroe.getFondo() instanceof Teletransporte){
+					t = heroe.getFondo();
+					heroe.setFondo(heroe.getFondo().getFondo());
+					mapa.ponerElemento(posicionMover, heroe);
+					cPosiciones.anhadirPosicion(posicionMover);
+					mapa.eliminarElemento(mapa.getPosicionHeroe());
+					mapa.ponerElemento(mapa.getPosicionHeroe(), t);
+					cPosiciones.anhadirPosicion(mapa.getPosicionHeroe());
+					mapa.setPosicionHeroe(posicionMover);
+				}
+				else{
+					Dibujable f = mapa.obtenerPosicion(mapa.getPosicionHeroe()).getFondo();
+					mapa.ponerElemento(posicionMover, heroe);
+					cPosiciones.anhadirPosicion(posicionMover);
+					mapa.eliminarElemento(mapa.getPosicionHeroe());
+					mapa.ponerElemento(mapa.getPosicionHeroe(), f);
+					cPosiciones.anhadirPosicion(mapa.getPosicionHeroe());
+					mapa.setPosicionHeroe(posicionMover);
+				}
 				
 			}
 
